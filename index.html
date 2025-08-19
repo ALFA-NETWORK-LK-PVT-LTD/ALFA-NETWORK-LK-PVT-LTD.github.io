@@ -865,7 +865,7 @@
         }
     </style>
 </head>
-<body data-theme="dark">
+    <body data-theme="light">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -1407,8 +1407,8 @@
         const themeIcon = document.getElementById('themeIcon');
         const body = document.body;
 
-        // Load saved theme or default to dark
-        const savedTheme = localStorage.getItem('theme') || 'dark';
+        // Load saved theme or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
         body.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme);
 
@@ -1498,6 +1498,12 @@
                         top: offsetTop,
                         behavior: 'smooth'
                     });
+                    
+                    // Close mobile menu if open
+                    const navLinks = document.querySelector('.nav-links');
+                    if (window.innerWidth <= 768 && navLinks.style.display === 'flex') {
+                        navLinks.style.display = 'none';
+                    }
                 }
             });
         });
