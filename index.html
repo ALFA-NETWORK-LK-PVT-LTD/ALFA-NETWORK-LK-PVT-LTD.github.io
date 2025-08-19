@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALFA Network LK - Sri Lanka's #1 Cybersecurity Arsenal | 2500+ Orders Completed</title>
+    <meta name="description" content="Premium network & security testing tools in Sri Lanka. Flipper Zero, HackRF, Wi-Fi Pineapple & expert consulting. 2500+ successful orders.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #00D4FF;
+            --cyber-green: #00FF88;
+            --deep-purple: #6B46FF;
+            --neon-orange: #FF6B35;
+            --hot-pink: #FF1493;
+            --matrix-green: #39FF14;
+            --bg-dark: #0A0E27;
+            --bg-secondary: #1A1B3A;
+            --text-white: #FFFFFF;
+            --text-gray: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
+            color: var(--text-white);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--cyber-green);
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10px) translateX(100px); opacity: 0; }
+        }
+
+        /* Matrix rain effect */
+        .matrix {
+            position: absolute;
+            color: var(--matrix-green);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            animation: matrix-rain 3s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes matrix-rain {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 27, 58, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary-blue), var(--cyber-green));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px var(--primary-blue)); }
+            to { filter: drop-shadow(0 0 20px var(--cyber-green)); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--cyber-green));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-blue);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-blue), var(--cyber-green), var(--deep-purple));
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--cyber-green);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-blue), var(--cyber-green));
+            color: var(--bg-dark);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--bg-dark);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Image Placeholder Styles */
+        .img-placeholder {
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(107, 70, 255, 0.1));
+            border: 2px dashed var(--primary-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-gray);
+            font-style: italic;
+            min-height: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .img-placeholder:hover {
+            border-color: var(--cyber-green);
+            background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), rgba(255, 20, 147, 0.1));
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(26, 27, 58, 0.8) 0%, rgba(10, 14, 39, 0.9) 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, var(--primary-blue), var(--cyber-green));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .about-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .mission-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid var(--cyber-green);
+            transition: all 0.3s ease;
+        }
+
+        .mission-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
+        }
+
+        .product-image {
+            height: 200px;
+            position: relative;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--cyber-green);
+            margin-bottom: 1rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            padding: 0.3rem 0;
+            color: var(--text-gray);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cyber-green);
+            font-weight: bold;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(26, 27, 58, 0.8) 0%, rgba(10, 14, 39, 0.9) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--cyber-green);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .stars {
+            color: var(--neon-orange);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-gray);
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(26, 27, 58, 0.8) 0%, rgba(10, 14, 39, 0.9) 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--cyber-green);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--cyber-green);
+            text-shadow: 0 0 5px var(--cyber-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 80%;
+                max-width: 300px;
+            }
+
+            .about-grid,
+            .products-grid,
+            .services-grid,
+            .testimonials-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation" id="bgAnimation">
+        <!-- Particles and matrix rain will be generated by JavaScript -->
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🛡️ ALFA Network LK</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Sri Lanka's #1 Cybersecurity Arsenal</h1>
+            <p class="hero-subtitle">Empowering digital defenders with world-class penetration testing tools and expert consulting services</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item fade-in">
+                    <span class="stat-number" data-count="2500">0</span>
+                    <span class="stat-label">Orders Completed</span>
+                </div>
+                <div class="stat-item fade-in">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-label">Success Rate %</span>
+                </div>
+                <div class="stat-item fade-in">
+                    <span class="stat-number" data-count="24">0</span>
+                    <span class="stat-label">Hour Support</span>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#products" class="btn btn-primary">Explore Products</a>
+                <a href="#contact" class="btn btn-secondary">Get Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About ALFA Network LK</h2>
+            
+            <div class="about-grid">
+                <div class="about-card fade-in">
+                    <div class="img-placeholder">
+                        <p>📊 Company Statistics Infographic<br>
+                        <small>Visual representation of 2,500+ orders, global reach map, growth timeline since inception</small></p>
+                    </div>
+                </div>
+                <div class="about-card fade-in">
+                    <span class="about-icon">🌍</span>
+                    <h3>Our Vision</h3>
+                    <p>To build the largest global platform for network and security testing tools and consulting, bridging the gap between innovation and practical cybersecurity solutions.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <div class="img-placeholder">
+                        <p>👥 Team Photo<br>
+                        <small>Professional team photo with cyberpunk-style filters showing our cybersecurity experts</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mission-grid">
+                <div class="mission-item fade-in">
+                    <span class="about-icon">🌍</span>
+                    <div>
+                        <h4>Global Mission</h4>
+                        <p>Connecting Sri Lanka with the world through cutting-edge security solutions</p>
+                    </div>
+                </div>
+                <div class="mission-item fade-in">
+                    <span class="about-icon">🔒</span>
+                    <div>
+                        <h4>Ethical Cybersecurity</h4>
+                        <p>Enabling responsible testing, learning, and protection for all</p>
+                    </div>
+                </div>
+                <div class="mission-item fade-in">
+                    <span class="about-icon">⚡</span>
+                    <div>
+                        <h4>Innovation Passion</h4>
+                        <p>Continuously exploring and introducing the latest advancements</p>
+                    </div>
+                </div>
+                <div class="mission-item fade-in">
+                    <span class="about-icon">🤝</span>
+                    <div>
+                        <h4>Customer Dedication</h4>
+                        <p>Ensuring reliable service, professional guidance, and long-term trust</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Premium Security Testing Tools</h2>
+            <p class="section-subtitle" style="text-align: center; color: var(--text-gray); margin-bottom: 2rem;">Professional-grade penetration testing devices trusted by security experts worldwide</p>
+            
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image img-placeholder">
+                        <p>🐬 Flipper Zero Device<br>
+                        <small>High-resolution product photo showing the Flipper Zero with its distinctive dolphin design and screen interface</small></p>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Flipper Zero</h3>
+                        <p class="product-price">$169.99</p>
+                        <ul class="product-features">
+                            <li>Multi-tool for pentesting</li>
+                            <li>RFID & NFC capabilities</li>
+                            <li>Sub-GHz radio</li>
+                            <li>GPIO & expansion ports</li>
+                            <li>Open-source firmware</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image img-placeholder">
+                        <p>📡 HackRF One SDR<br>
+                        <small>Professional product shot of HackRF One showing the device, antennas, and connection ports</small></p>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">HackRF One</h3>
+                        <p class="product-price">$299.99</p>
+                        <ul class="product-features">
+                            <li>1 MHz to 6 GHz range</li>
+                            <li>Software Defined Radio</li>
+                            <li>USB 2.0 interface</li>
+                            <li>Open source hardware</li>
+                            <li>GNU Radio compatible</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image img-placeholder">
+                        <p>🍍 Wi-Fi Pineapple Mark VII<br>
+                        <small>Sleek product image of Wi-Fi Pineapple showing the device and its antenna configuration</small></p>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Wi-Fi Pineapple Mark VII</h3>
+                        <p class="product-price">$199.99</p>
+                        <ul class="product-features">
+                            <li>Wireless auditing platform</li>
+                            <li>Dual-band 802.11ac</li>
+                            <li>Web-based management</li>
+                            <li>Modular payload system</li>
+                            <li>Campaign tracking</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image img-placeholder">
+                        <p>🔧 RTL-SDR Bundle<br>
+                        <small>Complete RTL-SDR kit showing dongles, antennas, and accessories in professional arrangement</small></p>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">RTL-SDR Pro Bundle</h3>
+                        <p class="product-price">$79.99</p>
+                        <ul class="product-features">
+                            <li>24MHz - 1766MHz range</li>
+                            <li>Multiple antennas included</li>
+                            <li>Low noise amplifier</li>
+                            <li>USB 3.0 compatible</li>
+                            <li>Complete starter kit</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image img-placeholder">
+                        <p>🎯 Ubertooth One<br>
+                        <small>Bluetooth security testing device with USB connector and antenna, shown against tech background</small></p>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ubertooth One</h3>
+                        <p class="product-price">$124.99</p>
+                        <ul class="product-features">
+                            <li>Bluetooth monitoring</li>
+                            <li>2.4 GHz spectrum analysis</li>
+                            <li>Packet capture</li>
+                            <li>Open source platform</li>
+                            <li>Research & development</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image img-placeholder">
+                        <p>🛡️ Proxmark3 RDV4<br>
+                        <small>Advanced RFID/NFC testing tool with accessories and cards displayed professionally</small></p>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Proxmark3 RDV4</h3>
+                        <p class="product-price">$349.99</p>
+                        <ul class="product-features">
+                            <li>Advanced RFID/NFC tool</li>
+                            <li>Standalone operation</li>
+                            <li>Battery powered</li>
+                            <li>Bluetooth connectivity</li>
+                            <li>Professional grade</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Expert Consulting Services</h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 3rem;">Professional cybersecurity consulting to strengthen your digital defenses</p>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎯</div>
+                    <h3>Penetration Testing</h3>
+                    <p>Comprehensive security assessments to identify vulnerabilities in your network infrastructure and applications.</p>
+                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
+                        <p>🔍 Penetration Testing Process<br>
+                        <small>Infographic showing testing phases: reconnaissance, scanning, exploitation, post-exploitation</small></p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Security Auditing</h3>
+                    <p>Detailed security audits to ensure compliance with industry standards and best practices.</p>
+                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
+                        <p>📋 Security Audit Checklist<br>
+                        <small>Visual checklist showing various security audit components and compliance standards</small></p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎓</div>
+                    <h3>Training & Workshops</h3>
+                    <p>Hands-on cybersecurity training programs for individuals and corporate teams.</p>
+                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
+                        <p>👨‍🏫 Training Session<br>
+                        <small>Professional training environment with instructors and students working with security tools</small></p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔧</div>
+                    <h3>Tool Configuration</h3>
+                    <p>Expert setup and configuration of security testing tools for optimal performance.</p>
+                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
+                        <p>⚙️ Tool Setup Process<br>
+                        <small>Step-by-step configuration guide showing tool setup and optimization</small></p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">📞</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock technical support and consultation for all our products and services.</p>
+                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
+                        <p>🕒 24/7 Support Center<br>
+                        <small>Modern support center with multiple communication channels and response time metrics</small></p>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏢</div>
+                    <h3>Enterprise Solutions</h3>
+                    <p>Customized cybersecurity solutions tailored for large-scale enterprise environments.</p>
+                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
+                        <p>🏭 Enterprise Security Architecture<br>
+                        <small>Network diagram showing comprehensive enterprise security infrastructure</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 3rem;">Trusted by cybersecurity professionals across Sri Lanka and beyond</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
+                        <p>👤 Client Avatar<br>
+                        <small>Professional headshot of satisfied client</small></p>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"ALFA Network LK provided exceptional service. Their Flipper Zero arrived quickly and their technical support helped me get started immediately. Highly recommended!"</p>
+                    <p class="testimonial-author">- Rajesh Kumar, IT Security Analyst</p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
+                        <p>👩 Client Avatar<br>
+                        <small>Professional headshot of satisfied client</small></p>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Outstanding quality products and expert consultation. The penetration testing training was comprehensive and practical. ALFA Network LK is the go-to source for security tools in Sri Lanka."</p>
+                    <p class="testimonial-author">- Priya Wickramasinghe, Cybersecurity Consultant</p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
+                        <p>👨 Client Avatar<br>
+                        <small>Professional headshot of satisfied client</small></p>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Fast delivery, competitive prices, and excellent after-sales support. Their HackRF One bundle was exactly what our research team needed. Will definitely order again."</p>
+                    <p class="testimonial-author">- Dr. Chaminda Silva, University Researcher</p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
+                        <p>🏢 Company Logo<br>
+                        <small>Corporate client logo</small></p>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"ALFA Network LK has been our trusted partner for cybersecurity tools and training. Their enterprise solutions have significantly enhanced our security posture."</p>
+                    <p class="testimonial-author">- TechCorp Solutions, IT Director</p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
+                        <p>👨‍💻 Client Avatar<br>
+                        <small>Professional headshot of satisfied client</small></p>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Professional service from start to finish. Their team's expertise in SDR technologies helped us implement our spectrum monitoring solution successfully."</p>
+                    <p class="testimonial-author">- Nuwan Perera, Network Engineer</p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
+                        <p>👩‍🔬 Client Avatar<br>
+                        <small>Professional headshot of satisfied client</small></p>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The Wi-Fi Pineapple from ALFA Network LK exceeded expectations. Great product quality and their workshop training was invaluable for our security team."</p>
+                    <p class="testimonial-author">- Melissa Fernando, Security Researcher</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <div class="img-placeholder" style="max-width: 600px; margin: 0 auto; height: 200px;">
+                    <p>🏆 Awards & Certifications<br>
+                    <small>Display of industry certifications, awards, and recognition badges earned by ALFA Network LK</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 3rem;">Ready to strengthen your cybersecurity? Contact our experts today!</p>
+            
+            <div class="contact-grid">
+                <div class="contact-form fade-in">
+                    <h3 style="margin-bottom: 2rem; color: var(--primary-blue);">Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <input type="text" id="service" name="service" placeholder="e.g., Flipper Zero, Consultation">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info fade-in">
+                    <div class="img-placeholder" style="height: 200px; margin-bottom: 2rem;">
+                        <p>🗺️ Interactive Sri Lanka Map<br>
+                        <small>Interactive map showing ALFA Network LK office location in Colombo with contact details</small></p>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <h4>Our Location</h4>
+                            <p>Colombo, Western Province<br>Sri Lanka</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>+94 11 234 5678<br>+94 77 123 4567</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>info@alfanetworklk.com<br>support@alfanetworklk.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">🕒</span>
+                        <div>
+                            <h4>Business Hours</h4>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">💬</span>
+                        <div>
+                            <h4>Live Chat</h4>
+                            <p>Available 24/7 for instant support<br>Click the chat icon below</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;">
+                <div class="img-placeholder" style="max-width: 800px; margin: 0 auto; height: 150px;">
+                    <p>📱 Social Media & Communication Channels<br>
+                    <small>Social media icons, WhatsApp, Telegram, and other communication platform links</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="img-placeholder" style="height: 100px; margin-bottom: 1rem;">
+                        <p>🛡️ Company Logo<br>
+                        <small>ALFA Network LK professional logo</small></p>
+                    </div>
+                    <p>Sri Lanka's premier provider of network and security testing tools. Building stronger digital defenses for a safer connected future.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="#products">Products</a>
+                    <a href="#services">Services</a>
+                    <a href="#testimonials">Reviews</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Product Categories</h3>
+                    <a href="#">SDR Devices</a>
+                    <a href="#">RFID/NFC Tools</a>
+                    <a href="#">Wi-Fi Testing</a>
+                    <a href="#">Bluetooth Tools</a>
+                    <a href="#">Accessories</a>
+                    <a href="#">Bundles</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Documentation</a>
+                    <a href="#">Tutorials</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Technical Support</a>
+                    <a href="#">Warranty</a>
+                    <a href="#">Returns</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="img-placeholder" style="height: 120px;">
+                        <p>🔗 Social Media Links<br>
+                        <small>Facebook, LinkedIn, Twitter, YouTube, WhatsApp, Telegram icons with links</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 ALFA Network LK (Pvt) Ltd. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p>🇱🇰 Proudly Sri Lankan | 🌍 Serving Global Cybersecurity Community</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Animated Background Generation
+        function createParticles() {
+            const bgAnimation = document.getElementById('bgAnimation');
+            
+            // Create floating particles
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                bgAnimation.appendChild(particle);
+            }
+
+            // Create matrix rain
+            for (let i = 0; i < 20; i++) {
+                const matrix = document.createElement('div');
+                matrix.classList.add('matrix');
+                matrix.textContent = Math.random() > 0.5 ? '1' : '0';
+                matrix.style.left = Math.random() * 100 + '%';
+                matrix.style.animationDelay = Math.random() * 3 + 's';
+                matrix.style.fontSize = (Math.random() * 8 + 8) + 'px';
+                bgAnimation.appendChild(matrix);
+            }
+        }
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current) + (target === 24 ? '/7' : target === 98 ? '%' : '+');
+                }, 20);
+            });
+        }
+
+        // Scroll Animations
+        function handleScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Form submission handler
+        function initFormHandler() {
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you within 24 hours.');
+                this.reset();
+            });
+        }
+
+        // Mobile menu toggle
+        function initMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(26, 27, 58, 0.95)';
+                navLinks.style.backdropFilter = 'blur(20px)';
+                navLinks.style.padding = '2rem';
+            });
+        }
+
+        // Initialize all functions when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            setTimeout(animateCounters, 1000);
+            handleScrollAnimations();
+            initSmoothScrolling();
+            initFormHandler();
+            initMobileMenu();
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 14, 39, 0.98)';
+            } else {
+                nav.style.background = 'rgba(26, 27, 58, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
