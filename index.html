@@ -110,6 +110,12 @@
             text-decoration: none;
         }
 
+        .logo-image {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
         .logo-icon {
             width: 32px;
             height: 32px;
@@ -119,6 +125,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1rem;
+            display: none; /* Hide the emoji icon since we have the actual logo */
         }
 
         .nav-links {
@@ -799,6 +806,14 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+            .logo-image {
+                height: 35px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -833,6 +848,19 @@
             .scroll-to-top {
                 bottom: 1rem;
                 right: 1rem;
+            }
+
+            .logo-image {
+                height: 30px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-container {
+                height: 65px;
+                padding: 0 1rem;
             }
         }
 
@@ -870,7 +898,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">
-                <div class="logo-icon"><img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1755632209/ALFA_NETWORKLK-new-removebg-preview_ep3xzv.png" alt="Trulli" width="5%" height="5%"></div>
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1755632209/ALFA_NETWORKLK-new-removebg-preview_ep3xzv.png" alt="ALFA Network LK Logo" class="logo-image">
                 <span>ALFA Network LK</span>
             </a>
             
@@ -935,7 +963,7 @@
     <section class="section section-alt" id="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">About</h2><h2 class="section-title"> ALFA Network LK</h2>
+                <h2 class="section-title">About ALFA Network LK</h2>
                 <p class="section-subtitle">Leading provider of professional cybersecurity tools and consulting services in Sri Lanka, trusted by security professionals worldwide.</p>
             </div>
             
@@ -1340,7 +1368,7 @@
                 <div class="footer-section">
                     <div style="margin-bottom: 1.5rem;">
                         <div class="logo">
-                            <div class="logo-icon">🛡️</div>
+                            <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1755632209/ALFA_NETWORKLK-new-removebg-preview_ep3xzv.png" alt="ALFA Network LK Logo" class="logo-image">
                             <span>ALFA Network LK</span>
                         </div>
                     </div>
@@ -1390,7 +1418,7 @@
 
             <div class="footer-bottom">
                 <p>&copy; 2024 ALFA Network LK (Pvt) Ltd. All rights reserved. | Privacy Policy | Terms of Service | Professional Standards</p>
-                <p style="margin-top: 0.5rem;">🇱🇰 Proudly Sri Lankan • 🌍 Serving Global Cybersecurity Community • 🛡️ ISO 27001 Compliant</p>
+                <p style="margin-top: 0.5rem;">🇱🇰 Proudly Sri Lankan • 🌍 Serving Global Cybersecurity Community</p>
             </div>
         </div>
     </footer>
