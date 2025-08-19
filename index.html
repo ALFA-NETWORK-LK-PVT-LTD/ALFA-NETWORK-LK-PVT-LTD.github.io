@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALFA Network LK - Sri Lanka's #1 Cybersecurity Arsenal | 2500+ Orders Completed</title>
-    <meta name="description" content="Premium network & security testing tools in Sri Lanka. Flipper Zero, HackRF, Wi-Fi Pineapple & expert consulting. 2500+ successful orders.">
+    <title>ALFA Network LK - Sri Lanka's Premier Cybersecurity Solutions | 2500+ Orders Completed</title>
+    <meta name="description" content="Professional cybersecurity tools and consulting in Sri Lanka. Flipper Zero, HackRF, Wi-Fi Pineapple & expert services. Trusted by security professionals.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,152 +16,220 @@
         }
 
         :root {
-            --primary-blue: #00D4FF;
-            --cyber-green: #00FF88;
-            --deep-purple: #6B46FF;
-            --neon-orange: #FF6B35;
-            --hot-pink: #FF1493;
-            --matrix-green: #39FF14;
-            --bg-dark: #0A0E27;
-            --bg-secondary: #1A1B3A;
-            --text-white: #FFFFFF;
-            --text-gray: #E2E8F0;
+            /* Dark Theme (default) */
+            --primary-color: #3B82F6;
+            --secondary-color: #10B981;
+            --accent-color: #8B5CF6;
+            --danger-color: #EF4444;
+            --warning-color: #F59E0B;
+            
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-tertiary: #334155;
+            --bg-card: #1E293B;
+            --bg-overlay: rgba(15, 23, 42, 0.95);
+            
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --text-muted: #94A3B8;
+            --text-inverse: #0F172A;
+            
+            --border-color: #334155;
+            --border-accent: #3B82F6;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        [data-theme="light"] {
+            /* Light Theme */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --bg-tertiary: #E2E8F0;
+            --bg-card: #FFFFFF;
+            --bg-overlay: rgba(255, 255, 255, 0.95);
+            
+            --text-primary: #0F172A;
+            --text-secondary: #334155;
+            --text-muted: #64748B;
+            --text-inverse: #FFFFFF;
+            
+            --border-color: #E2E8F0;
+            --border-accent: #3B82F6;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
-            color: var(--text-white);
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--cyber-green);
-            border-radius: 50%;
-            animation: float 6s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10px) translateX(100px); opacity: 0; }
-        }
-
-        /* Matrix rain effect */
-        .matrix {
-            position: absolute;
-            color: var(--matrix-green);
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            animation: matrix-rain 3s linear infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes matrix-rain {
-            0% { transform: translateY(-100vh); }
-            100% { transform: translateY(100vh); }
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Navigation */
-        nav {
+        .navbar {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(26, 27, 58, 0.95);
+            left: 0;
+            right: 0;
+            background-color: var(--bg-overlay);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            padding: 1rem 0;
             transition: all 0.3s ease;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 1.5rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            justify-content: space-between;
+            height: 70px;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, var(--primary-blue), var(--cyber-green));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
         }
 
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 5px var(--primary-blue)); }
-            to { filter: drop-shadow(0 0 20px var(--cyber-green)); }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
         }
 
         .nav-links {
             display: flex;
-            list-style: none;
+            align-items: center;
             gap: 2rem;
+            list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-gray);
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s ease;
+            font-weight: 500;
             position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--primary-blue);
-            text-shadow: 0 0 10px var(--primary-blue);
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--cyber-green));
+            background-color: var(--primary-color);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
 
-        /* Mobile menu */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-blue);
-            margin: 3px 0;
-            transition: 0.3s;
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
         }
 
         /* Hero Section */
@@ -166,247 +237,238 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            padding-top: 70px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
             position: relative;
             overflow: hidden;
         }
 
-        .hero-content {
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--primary-color)20 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, var(--secondary-color)20 0%, transparent 50%);
+            opacity: 0.1;
+        }
+
+        .hero-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
-            z-index: 10;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary-blue), var(--cyber-green), var(--deep-purple));
-            background-size: 400% 400%;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-shift 3s ease-in-out infinite;
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
         }
 
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .hero-content .highlight {
+            color: var(--primary-color);
         }
 
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--text-gray);
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
             margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 0.5s;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
-        .stat-item {
+        .stat-card {
             text-align: center;
             padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            backdrop-filter: blur(10px);
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
         }
 
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--border-accent);
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--cyber-green);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
             display: block;
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            color: var(--text-gray);
-            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
         }
 
-        .cta-buttons {
+        .hero-actions {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary-blue), var(--cyber-green));
-            color: var(--bg-dark);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.6);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-blue);
-            color: var(--bg-dark);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
-        }
-
-        /* Image Placeholder Styles */
-        .img-placeholder {
-            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(107, 70, 255, 0.1));
-            border: 2px dashed var(--primary-blue);
-            border-radius: 10px;
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-tertiary));
+            border-radius: 16px;
+            border: 2px dashed var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--text-gray);
+            color: var(--text-muted);
             font-style: italic;
-            min-height: 200px;
             transition: all 0.3s ease;
         }
 
-        .img-placeholder:hover {
-            border-color: var(--cyber-green);
-            background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), rgba(255, 20, 147, 0.1));
+        .hero-image:hover {
+            border-color: var(--border-accent);
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-card));
         }
 
-        /* About Section */
-        .about {
+        /* Section Styles */
+        .section {
             padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(26, 27, 58, 0.8) 0%, rgba(10, 14, 39, 0.9) 100%);
+        }
+
+        .section-alt {
+            background-color: var(--bg-secondary);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, var(--primary-blue), var(--cyber-green));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
         .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            gap: 2rem;
             margin-bottom: 4rem;
         }
 
         .about-card {
-            background: rgba(255, 255, 255, 0.1);
+            background-color: var(--bg-card);
             padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
         }
 
         .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--border-accent);
         }
 
         .about-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .mission-item {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border-left: 4px solid var(--cyber-green);
-            transition: all 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .mission-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
+        .about-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .about-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
 
         /* Products Section */
-        .products {
-            padding: 5rem 0;
-        }
-
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .product-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
             overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.3);
             transition: all 0.3s ease;
-            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-15px) rotateX(5deg);
-            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--border-accent);
         }
 
         .product-image {
             height: 200px;
-            position: relative;
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            padding: 1rem;
         }
 
         .product-info {
@@ -414,16 +476,16 @@
         }
 
         .product-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--primary-blue);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
 
         .product-price {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--cyber-green);
+            font-weight: 700;
+            color: var(--secondary-color);
             margin-bottom: 1rem;
         }
 
@@ -433,133 +495,146 @@
         }
 
         .product-features li {
-            padding: 0.3rem 0;
-            color: var(--text-gray);
+            padding: 0.375rem 0;
+            color: var(--text-secondary);
             position: relative;
             padding-left: 1.5rem;
+            font-size: 0.9rem;
         }
 
         .product-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--cyber-green);
-            font-weight: bold;
+            color: var(--secondary-color);
+            font-weight: 600;
         }
 
         /* Services Section */
-        .services {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(26, 27, 58, 0.8) 0%, rgba(10, 14, 39, 0.9) 100%);
-        }
-
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.1);
+            background-color: var(--bg-card);
             padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
         .service-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--border-accent);
         }
 
         .service-icon {
-            font-size: 3rem;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--cyber-green);
+            color: var(--text-primary);
         }
 
-        /* Testimonials */
-        .testimonials {
-            padding: 5rem 0;
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
 
+        /* Testimonials Section */
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
         }
 
         .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
+            background-color: var(--bg-card);
             padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border-accent);
         }
 
-        .stars {
-            color: var(--neon-orange);
-            font-size: 1.2rem;
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info h4 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .testimonial-rating {
+            color: var(--warning-color);
             margin-bottom: 1rem;
         }
 
         .testimonial-text {
+            color: var(--text-secondary);
             font-style: italic;
-            margin-bottom: 1rem;
-            color: var(--text-gray);
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--primary-blue);
+            line-height: 1.7;
         }
 
         /* Contact Section */
-        .contact {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(26, 27, 58, 0.8) 0%, rgba(10, 14, 39, 0.9) 100%);
-        }
-
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.1);
+            background-color: var(--bg-card);
             padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
         }
 
         .form-group {
@@ -569,61 +644,81 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--text-gray);
+            font-weight: 500;
+            color: var(--text-primary);
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-white);
-            backdrop-filter: blur(10px);
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: inherit;
             transition: all 0.3s ease;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            border-color: var(--border-accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
             padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            backdrop-filter: blur(10px);
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+            border-color: var(--border-accent);
+            transform: translateX(4px);
         }
 
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--cyber-green);
+        .contact-item-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         /* Footer */
         .footer {
-            background: var(--bg-dark);
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
             padding: 3rem 0 1rem;
-            border-top: 1px solid rgba(0, 212, 255, 0.3);
         }
 
         .footer-grid {
@@ -634,70 +729,114 @@
         }
 
         .footer-section h3 {
-            color: var(--primary-blue);
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 1rem;
         }
 
         .footer-section a {
-            color: var(--text-gray);
+            color: var(--text-secondary);
             text-decoration: none;
             display: block;
-            margin-bottom: 0.5rem;
-            transition: all 0.3s ease;
+            padding: 0.25rem 0;
+            transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
-            color: var(--cyber-green);
-            text-shadow: 0 0 5px var(--cyber-green);
+            color: var(--primary-color);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-gray);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-            
-            .mobile-menu {
-                display: flex;
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             .hero-stats {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+                grid-template-columns: 1fr;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            .hero-actions {
+                justify-content: center;
             }
 
             .btn {
-                width: 80%;
-                max-width: 300px;
+                width: 100%;
+                justify-content: center;
             }
 
             .about-grid,
             .products-grid,
             .services-grid,
-            .testimonials-grid,
-            .contact-grid {
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
 
-            .mission-grid {
-                grid-template-columns: 1fr;
+            .scroll-to-top {
+                bottom: 1rem;
+                right: 1rem;
             }
         }
 
-        /* Scroll animations */
+        /* Animation utilities */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -709,247 +848,260 @@
             transform: translateY(0);
         }
 
-        /* Loading animation */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        /* Loading states */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
         }
 
-        .loading {
-            animation: pulse 2s ease-in-out infinite;
+        /* Professional hover effects */
+        .interactive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
         }
     </style>
 </head>
-<body>
-    <!-- Animated Background -->
-    <div class="bg-animation" id="bgAnimation">
-        <!-- Particles and matrix rain will be generated by JavaScript -->
-    </div>
-
+<body data-theme="dark">
     <!-- Navigation -->
-    <nav>
+    <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">🛡️ ALFA Network LK</div>
+            <a href="#home" class="logo">
+                <div class="logo-icon">🛡️</div>
+                <span>ALFA Network LK</span>
+            </a>
+            
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <button class="mobile-menu-btn">☰</button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Sri Lanka's #1 Cybersecurity Arsenal</h1>
-            <p class="hero-subtitle">Empowering digital defenders with world-class penetration testing tools and expert consulting services</p>
-            
-            <div class="hero-stats">
-                <div class="stat-item fade-in">
-                    <span class="stat-number" data-count="2500">0</span>
-                    <span class="stat-label">Orders Completed</span>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Sri Lanka's Premier <span class="highlight">Cybersecurity Solutions</span></h1>
+                <p>Empowering digital defenders with professional-grade penetration testing tools, expert consulting services, and comprehensive security solutions.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-card fade-in">
+                        <span class="stat-number" data-count="2500">0</span>
+                        <span class="stat-label">Orders Completed</span>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <span class="stat-number" data-count="98">0</span>
+                        <span class="stat-label">Success Rate %</span>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <span class="stat-number" data-count="24">0</span>
+                        <span class="stat-label">Hour Support</span>
+                    </div>
                 </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number" data-count="98">0</span>
-                    <span class="stat-label">Success Rate %</span>
-                </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number" data-count="24">0</span>
-                    <span class="stat-label">Hour Support</span>
+
+                <div class="hero-actions">
+                    <a href="#products" class="btn btn-primary">Explore Products</a>
+                    <a href="#contact" class="btn btn-secondary">Get Consultation</a>
                 </div>
             </div>
-
-            <div class="cta-buttons">
-                <a href="#products" class="btn btn-primary">Explore Products</a>
-                <a href="#contact" class="btn btn-secondary">Get Consultation</a>
+            
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-primary);">🛡️ Professional Security Arsenal</h3>
+                        <p>Comprehensive cybersecurity tools showcase<br>featuring Flipper Zero, HackRF, Wi-Fi Pineapple,<br>and other professional equipment</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="section section-alt" id="about">
         <div class="container">
-            <h2 class="section-title">About ALFA Network LK</h2>
+            <div class="section-header">
+                <h2 class="section-title">About ALFA Network LK</h2>
+                <p class="section-subtitle">Leading provider of professional cybersecurity tools and consulting services in Sri Lanka, trusted by security professionals worldwide.</p>
+            </div>
             
             <div class="about-grid">
-                <div class="about-card fade-in">
-                    <div class="img-placeholder">
-                        <p>📊 Company Statistics Infographic<br>
-                        <small>Visual representation of 2,500+ orders, global reach map, growth timeline since inception</small></p>
-                    </div>
+                <div class="about-card fade-in interactive-card">
+                    <div class="about-icon">🎯</div>
+                    <h3>Our Mission</h3>
+                    <p>To democratize access to professional cybersecurity tools and knowledge, empowering organizations and individuals to build robust digital defenses against evolving threats.</p>
                 </div>
-                <div class="about-card fade-in">
-                    <span class="about-icon">🌍</span>
-                    <h3>Our Vision</h3>
-                    <p>To build the largest global platform for network and security testing tools and consulting, bridging the gap between innovation and practical cybersecurity solutions.</p>
+                <div class="about-card fade-in interactive-card">
+                    <div class="about-icon">🌍</div>
+                    <h3>Global Vision</h3>
+                    <p>Building the largest platform for network and security testing tools in South Asia, connecting Sri Lanka with the global cybersecurity community through innovation and excellence.</p>
                 </div>
-                <div class="about-card fade-in">
-                    <div class="img-placeholder">
-                        <p>👥 Team Photo<br>
-                        <small>Professional team photo with cyberpunk-style filters showing our cybersecurity experts</small></p>
-                    </div>
+                <div class="about-card fade-in interactive-card">
+                    <div class="about-icon">🔒</div>
+                    <h3>Ethical Standards</h3>
+                    <p>Committed to promoting responsible security testing, ethical hacking practices, and continuous education to foster a safer digital ecosystem for everyone.</p>
                 </div>
-            </div>
-
-            <div class="mission-grid">
-                <div class="mission-item fade-in">
-                    <span class="about-icon">🌍</span>
-                    <div>
-                        <h4>Global Mission</h4>
-                        <p>Connecting Sri Lanka with the world through cutting-edge security solutions</p>
-                    </div>
-                </div>
-                <div class="mission-item fade-in">
-                    <span class="about-icon">🔒</span>
-                    <div>
-                        <h4>Ethical Cybersecurity</h4>
-                        <p>Enabling responsible testing, learning, and protection for all</p>
-                    </div>
-                </div>
-                <div class="mission-item fade-in">
-                    <span class="about-icon">⚡</span>
-                    <div>
-                        <h4>Innovation Passion</h4>
-                        <p>Continuously exploring and introducing the latest advancements</p>
-                    </div>
-                </div>
-                <div class="mission-item fade-in">
-                    <span class="about-icon">🤝</span>
-                    <div>
-                        <h4>Customer Dedication</h4>
-                        <p>Ensuring reliable service, professional guidance, and long-term trust</p>
-                    </div>
+                <div class="about-card fade-in interactive-card">
+                    <div class="about-icon">⚡</div>
+                    <h3>Innovation Focus</h3>
+                    <p>Continuously exploring cutting-edge security technologies and methodologies to bring the latest advancements to our clients and the cybersecurity community.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
-    <section class="products" id="products">
+    <section class="section" id="products">
         <div class="container">
-            <h2 class="section-title">Premium Security Testing Tools</h2>
-            <p class="section-subtitle" style="text-align: center; color: var(--text-gray); margin-bottom: 2rem;">Professional-grade penetration testing devices trusted by security experts worldwide</p>
+            <div class="section-header">
+                <h2 class="section-title">Professional Security Testing Tools</h2>
+                <p class="section-subtitle">Industry-standard penetration testing devices and security assessment tools used by professionals worldwide.</p>
+            </div>
             
             <div class="products-grid">
-                <div class="product-card fade-in">
-                    <div class="product-image img-placeholder">
-                        <p>🐬 Flipper Zero Device<br>
-                        <small>High-resolution product photo showing the Flipper Zero with its distinctive dolphin design and screen interface</small></p>
+                <div class="product-card fade-in interactive-card">
+                    <div class="product-image">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">🐬 Flipper Zero</h4>
+                            <p>Multi-tool penetration testing device<br>with RFID, NFC, Sub-GHz capabilities</p>
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Flipper Zero</h3>
                         <p class="product-price">$169.99</p>
                         <ul class="product-features">
-                            <li>Multi-tool for pentesting</li>
-                            <li>RFID & NFC capabilities</li>
-                            <li>Sub-GHz radio</li>
-                            <li>GPIO & expansion ports</li>
+                            <li>Multi-protocol pentesting tool</li>
+                            <li>RFID & NFC security testing</li>
+                            <li>Sub-GHz radio analysis</li>
+                            <li>GPIO expansion interface</li>
                             <li>Open-source firmware</li>
+                            <li>Portable design</li>
                         </ul>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                        <a href="#contact" class="btn btn-primary">Request Quote</a>
                     </div>
                 </div>
 
-                <div class="product-card fade-in">
-                    <div class="product-image img-placeholder">
-                        <p>📡 HackRF One SDR<br>
-                        <small>Professional product shot of HackRF One showing the device, antennas, and connection ports</small></p>
+                <div class="product-card fade-in interactive-card">
+                    <div class="product-image">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">📡 HackRF One</h4>
+                            <p>Software Defined Radio platform<br>for RF spectrum analysis</p>
+                        </div>
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">HackRF One</h3>
+                        <h3 class="product-title">HackRF One SDR</h3>
                         <p class="product-price">$299.99</p>
                         <ul class="product-features">
-                            <li>1 MHz to 6 GHz range</li>
-                            <li>Software Defined Radio</li>
-                            <li>USB 2.0 interface</li>
-                            <li>Open source hardware</li>
-                            <li>GNU Radio compatible</li>
+                            <li>1 MHz to 6 GHz frequency range</li>
+                            <li>Software Defined Radio platform</li>
+                            <li>USB 2.0 connectivity</li>
+                            <li>Open source hardware design</li>
+                            <li>GNU Radio compatibility</li>
+                            <li>Professional RF analysis</li>
                         </ul>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                        <a href="#contact" class="btn btn-primary">Request Quote</a>
                     </div>
                 </div>
 
-                <div class="product-card fade-in">
-                    <div class="product-image img-placeholder">
-                        <p>🍍 Wi-Fi Pineapple Mark VII<br>
-                        <small>Sleek product image of Wi-Fi Pineapple showing the device and its antenna configuration</small></p>
+                <div class="product-card fade-in interactive-card">
+                    <div class="product-image">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">🍍 Wi-Fi Pineapple</h4>
+                            <p>Wireless network auditing platform<br>for security assessments</p>
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Wi-Fi Pineapple Mark VII</h3>
                         <p class="product-price">$199.99</p>
                         <ul class="product-features">
-                            <li>Wireless auditing platform</li>
-                            <li>Dual-band 802.11ac</li>
-                            <li>Web-based management</li>
+                            <li>Wireless security auditing</li>
+                            <li>Dual-band 802.11ac support</li>
+                            <li>Web-based management interface</li>
                             <li>Modular payload system</li>
-                            <li>Campaign tracking</li>
+                            <li>Campaign tracking & reporting</li>
+                            <li>Enterprise-grade features</li>
                         </ul>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                        <a href="#contact" class="btn btn-primary">Request Quote</a>
                     </div>
                 </div>
 
-                <div class="product-card fade-in">
-                    <div class="product-image img-placeholder">
-                        <p>🔧 RTL-SDR Bundle<br>
-                        <small>Complete RTL-SDR kit showing dongles, antennas, and accessories in professional arrangement</small></p>
+                <div class="product-card fade-in interactive-card">
+                    <div class="product-image">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">🔧 RTL-SDR Kit</h4>
+                            <p>Complete software defined radio<br>starter bundle</p>
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">RTL-SDR Pro Bundle</h3>
                         <p class="product-price">$79.99</p>
                         <ul class="product-features">
-                            <li>24MHz - 1766MHz range</li>
-                            <li>Multiple antennas included</li>
-                            <li>Low noise amplifier</li>
-                            <li>USB 3.0 compatible</li>
-                            <li>Complete starter kit</li>
+                            <li>24MHz - 1766MHz coverage</li>
+                            <li>Multiple antenna configurations</li>
+                            <li>Low noise amplifier included</li>
+                            <li>USB 3.0 compatibility</li>
+                            <li>Complete accessories kit</li>
+                            <li>Documentation & tutorials</li>
                         </ul>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                        <a href="#contact" class="btn btn-primary">Request Quote</a>
                     </div>
                 </div>
 
-                <div class="product-card fade-in">
-                    <div class="product-image img-placeholder">
-                        <p>🎯 Ubertooth One<br>
-                        <small>Bluetooth security testing device with USB connector and antenna, shown against tech background</small></p>
+                <div class="product-card fade-in interactive-card">
+                    <div class="product-image">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">🎯 Ubertooth One</h4>
+                            <p>Bluetooth security assessment<br>and monitoring tool</p>
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Ubertooth One</h3>
                         <p class="product-price">$124.99</p>
                         <ul class="product-features">
-                            <li>Bluetooth monitoring</li>
+                            <li>Bluetooth monitoring & analysis</li>
                             <li>2.4 GHz spectrum analysis</li>
-                            <li>Packet capture</li>
+                            <li>Packet capture capabilities</li>
                             <li>Open source platform</li>
-                            <li>Research & development</li>
+                            <li>Research & development tool</li>
+                            <li>Professional documentation</li>
                         </ul>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                        <a href="#contact" class="btn btn-primary">Request Quote</a>
                     </div>
                 </div>
 
-                <div class="product-card fade-in">
-                    <div class="product-image img-placeholder">
-                        <p>🛡️ Proxmark3 RDV4<br>
-                        <small>Advanced RFID/NFC testing tool with accessories and cards displayed professionally</small></p>
+                <div class="product-card fade-in interactive-card">
+                    <div class="product-image">
+                        <div>
+                            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">🛡️ Proxmark3 RDV4</h4>
+                            <p>Advanced RFID/NFC security<br>testing platform</p>
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Proxmark3 RDV4</h3>
                         <p class="product-price">$349.99</p>
                         <ul class="product-features">
-                            <li>Advanced RFID/NFC tool</li>
-                            <li>Standalone operation</li>
-                            <li>Battery powered</li>
+                            <li>Advanced RFID/NFC analysis</li>
+                            <li>Standalone operation mode</li>
+                            <li>Battery powered portability</li>
                             <li>Bluetooth connectivity</li>
-                            <li>Professional grade</li>
+                            <li>Professional grade hardware</li>
+                            <li>Comprehensive card support</li>
                         </ul>
-                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;">Add to Cart</a>
+                        <a href="#contact" class="btn btn-primary">Request Quote</a>
                     </div>
                 </div>
             </div>
@@ -957,168 +1109,155 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="section section-alt" id="services">
         <div class="container">
-            <h2 class="section-title">Expert Consulting Services</h2>
-            <p style="text-align: center; color: var(--text-gray); margin-bottom: 3rem;">Professional cybersecurity consulting to strengthen your digital defenses</p>
+            <div class="section-header">
+                <h2 class="section-title">Expert Consulting Services</h2>
+                <p class="section-subtitle">Professional cybersecurity consulting and training services to strengthen your organization's security posture.</p>
+            </div>
             
             <div class="services-grid">
-                <div class="service-card fade-in">
+                <div class="service-card fade-in interactive-card">
                     <div class="service-icon">🎯</div>
                     <h3>Penetration Testing</h3>
-                    <p>Comprehensive security assessments to identify vulnerabilities in your network infrastructure and applications.</p>
-                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
-                        <p>🔍 Penetration Testing Process<br>
-                        <small>Infographic showing testing phases: reconnaissance, scanning, exploitation, post-exploitation</small></p>
-                    </div>
+                    <p>Comprehensive security assessments using industry-standard methodologies to identify vulnerabilities in your network infrastructure, web applications, and wireless systems.</p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card fade-in interactive-card">
                     <div class="service-icon">🛡️</div>
                     <h3>Security Auditing</h3>
-                    <p>Detailed security audits to ensure compliance with industry standards and best practices.</p>
-                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
-                        <p>📋 Security Audit Checklist<br>
-                        <small>Visual checklist showing various security audit components and compliance standards</small></p>
-                    </div>
+                    <p>Detailed security audits and compliance assessments to ensure adherence to industry standards such as ISO 27001, PCI DSS, and other regulatory requirements.</p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card fade-in interactive-card">
                     <div class="service-icon">🎓</div>
-                    <h3>Training & Workshops</h3>
-                    <p>Hands-on cybersecurity training programs for individuals and corporate teams.</p>
-                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
-                        <p>👨‍🏫 Training Session<br>
-                        <small>Professional training environment with instructors and students working with security tools</small></p>
-                    </div>
+                    <h3>Professional Training</h3>
+                    <p>Hands-on cybersecurity training programs and workshops for individuals and corporate teams, covering ethical hacking, incident response, and security operations.</p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card fade-in interactive-card">
                     <div class="service-icon">🔧</div>
                     <h3>Tool Configuration</h3>
-                    <p>Expert setup and configuration of security testing tools for optimal performance.</p>
-                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
-                        <p>⚙️ Tool Setup Process<br>
-                        <small>Step-by-step configuration guide showing tool setup and optimization</small></p>
-                    </div>
+                    <p>Expert setup, configuration, and optimization of security testing tools and platforms to maximize effectiveness and ensure proper implementation in your environment.</p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card fade-in interactive-card">
                     <div class="service-icon">📞</div>
-                    <h3>24/7 Support</h3>
-                    <p>Round-the-clock technical support and consultation for all our products and services.</p>
-                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
-                        <p>🕒 24/7 Support Center<br>
-                        <small>Modern support center with multiple communication channels and response time metrics</small></p>
-                    </div>
+                    <h3>24/7 Technical Support</h3>
+                    <p>Round-the-clock technical support and consultation services for all our products and implementations, ensuring continuous operational excellence.</p>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="service-card fade-in interactive-card">
                     <div class="service-icon">🏢</div>
                     <h3>Enterprise Solutions</h3>
-                    <p>Customized cybersecurity solutions tailored for large-scale enterprise environments.</p>
-                    <div class="img-placeholder" style="margin: 1rem 0; height: 120px;">
-                        <p>🏭 Enterprise Security Architecture<br>
-                        <small>Network diagram showing comprehensive enterprise security infrastructure</small></p>
-                    </div>
+                    <p>Customized cybersecurity solutions tailored for large-scale enterprise environments, including managed security services and strategic consulting.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <section class="section" id="testimonials">
         <div class="container">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <p style="text-align: center; color: var(--text-gray); margin-bottom: 3rem;">Trusted by cybersecurity professionals across Sri Lanka and beyond</p>
+            <div class="section-header">
+                <h2 class="section-title">Client Success Stories</h2>
+                <p class="section-subtitle">Trusted by cybersecurity professionals, enterprises, and research institutions across Sri Lanka and internationally.</p>
+            </div>
             
             <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
-                        <p>👤 Client Avatar<br>
-                        <small>Professional headshot of satisfied client</small></p>
+                <div class="testimonial-card fade-in interactive-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👨‍💻</div>
+                        <div class="testimonial-info">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Senior Security Analyst</p>
+                        </div>
                     </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"ALFA Network LK provided exceptional service. Their Flipper Zero arrived quickly and their technical support helped me get started immediately. Highly recommended!"</p>
-                    <p class="testimonial-author">- Rajesh Kumar, IT Security Analyst</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"ALFA Network LK provided exceptional service with fast delivery and comprehensive technical support. Their Flipper Zero helped us identify critical RFID vulnerabilities in our access control systems. Highly professional team."</p>
                 </div>
 
-                <div class="testimonial-card fade-in">
-                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
-                        <p>👩 Client Avatar<br>
-                        <small>Professional headshot of satisfied client</small></p>
+                <div class="testimonial-card fade-in interactive-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👩‍🔬</div>
+                        <div class="testimonial-info">
+                            <h4>Dr. Priya Wickramasinghe</h4>
+                            <p>Cybersecurity Consultant</p>
+                        </div>
                     </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Outstanding quality products and expert consultation. The penetration testing training was comprehensive and practical. ALFA Network LK is the go-to source for security tools in Sri Lanka."</p>
-                    <p class="testimonial-author">- Priya Wickramasinghe, Cybersecurity Consultant</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Outstanding quality products and expert consultation. The penetration testing training program was comprehensive and practical. ALFA Network LK is definitely the premier source for professional security tools in Sri Lanka."</p>
                 </div>
 
-                <div class="testimonial-card fade-in">
-                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
-                        <p>👨 Client Avatar<br>
-                        <small>Professional headshot of satisfied client</small></p>
+                <div class="testimonial-card fade-in interactive-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">🎓</div>
+                        <div class="testimonial-info">
+                            <h4>Dr. Chaminda Silva</h4>
+                            <p>University Research Director</p>
+                        </div>
                     </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Fast delivery, competitive prices, and excellent after-sales support. Their HackRF One bundle was exactly what our research team needed. Will definitely order again."</p>
-                    <p class="testimonial-author">- Dr. Chaminda Silva, University Researcher</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Fast delivery, competitive pricing, and excellent after-sales support. The HackRF One bundle was exactly what our research team needed for spectrum analysis projects. Will definitely continue our partnership."</p>
                 </div>
 
-                <div class="testimonial-card fade-in">
-                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
-                        <p>🏢 Company Logo<br>
-                        <small>Corporate client logo</small></p>
+                <div class="testimonial-card fade-in interactive-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">🏢</div>
+                        <div class="testimonial-info">
+                            <h4>TechCorp Solutions</h4>
+                            <p>IT Security Department</p>
+                        </div>
                     </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"ALFA Network LK has been our trusted partner for cybersecurity tools and training. Their enterprise solutions have significantly enhanced our security posture."</p>
-                    <p class="testimonial-author">- TechCorp Solutions, IT Director</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"ALFA Network LK has been our trusted partner for cybersecurity tools and professional training services. Their enterprise solutions have significantly enhanced our security posture and incident response capabilities."</p>
                 </div>
 
-                <div class="testimonial-card fade-in">
-                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
-                        <p>👨‍💻 Client Avatar<br>
-                        <small>Professional headshot of satisfied client</small></p>
+                <div class="testimonial-card fade-in interactive-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👨‍💼</div>
+                        <div class="testimonial-info">
+                            <h4>Nuwan Perera</h4>
+                            <p>Network Security Engineer</p>
+                        </div>
                     </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Professional service from start to finish. Their team's expertise in SDR technologies helped us implement our spectrum monitoring solution successfully."</p>
-                    <p class="testimonial-author">- Nuwan Perera, Network Engineer</p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"Professional service from consultation to delivery. Their team's expertise in SDR technologies helped us successfully implement our spectrum monitoring solution for critical infrastructure protection."</p>
                 </div>
 
-                <div class="testimonial-card fade-in">
-                    <div class="img-placeholder" style="height: 80px; margin-bottom: 1rem;">
-                        <p>👩‍🔬 Client Avatar<br>
-                        <small>Professional headshot of satisfied client</small></p>
+                <div class="testimonial-card fade-in interactive-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👩‍🔬</div>
+                        <div class="testimonial-info">
+                            <h4>Melissa Fernando</h4>
+                            <p>Security Research Specialist</p>
+                        </div>
                     </div>
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The Wi-Fi Pineapple from ALFA Network LK exceeded expectations. Great product quality and their workshop training was invaluable for our security team."</p>
-                    <p class="testimonial-author">- Melissa Fernando, Security Researcher</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <div class="img-placeholder" style="max-width: 600px; margin: 0 auto; height: 200px;">
-                    <p>🏆 Awards & Certifications<br>
-                    <small>Display of industry certifications, awards, and recognition badges earned by ALFA Network LK</small></p>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text">"The Wi-Fi Pineapple from ALFA Network LK exceeded all expectations. Superior product quality and their hands-on workshop training was invaluable for our security assessment team's professional development."</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="section section-alt" id="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p style="text-align: center; color: var(--text-gray); margin-bottom: 3rem;">Ready to strengthen your cybersecurity? Contact our experts today!</p>
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Ready to enhance your cybersecurity capabilities? Contact our expert team for professional consultation and support.</p>
+            </div>
             
             <div class="contact-grid">
                 <div class="contact-form fade-in">
-                    <h3 style="margin-bottom: 2rem; color: var(--primary-blue);">Send us a Message</h3>
-                    <form>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--text-primary); font-weight: 600;">Professional Consultation Request</h3>
+                    <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Full Name</label>
+                            <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
+                            <label for="email">Email Address *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
@@ -1126,69 +1265,69 @@
                             <input type="tel" id="phone" name="phone">
                         </div>
                         <div class="form-group">
-                            <label for="service">Service Interested In</label>
-                            <input type="text" id="service" name="service" placeholder="e.g., Flipper Zero, Consultation">
+                            <label for="company">Company/Organization</label>
+                            <input type="text" id="company" name="company">
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your requirements..."></textarea>
+                            <label for="service">Service Interest</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="products">Security Testing Tools</option>
+                                <option value="consulting">Professional Consulting</option>
+                                <option value="training">Training & Workshops</option>
+                                <option value="penetration-testing">Penetration Testing</option>
+                                <option value="enterprise">Enterprise Solutions</option>
+                                <option value="support">Technical Support</option>
+                            </select>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        <div class="form-group">
+                            <label for="message">Project Requirements *</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Please describe your specific requirements, timeline, and any technical constraints..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Request</button>
                     </form>
                 </div>
 
                 <div class="contact-info fade-in">
-                    <div class="img-placeholder" style="height: 200px; margin-bottom: 2rem;">
-                        <p>🗺️ Interactive Sri Lanka Map<br>
-                        <small>Interactive map showing ALFA Network LK office location in Colombo with contact details</small></p>
-                    </div>
-
                     <div class="contact-item">
-                        <span class="contact-icon">📍</span>
+                        <div class="contact-item-icon">📍</div>
                         <div>
-                            <h4>Our Location</h4>
-                            <p>Colombo, Western Province<br>Sri Lanka</p>
+                            <h4>Business Location</h4>
+                            <p>Colombo, Western Province<br>Sri Lanka<br>Available for on-site consultations</p>
                         </div>
                     </div>
 
                     <div class="contact-item">
-                        <span class="contact-icon">📞</span>
+                        <div class="contact-item-icon">📞</div>
                         <div>
-                            <h4>Call Us</h4>
-                            <p>+94 11 234 5678<br>+94 77 123 4567</p>
+                            <h4>Direct Contact</h4>
+                            <p>+94 11 234 5678 (Office)<br>+94 77 123 4567 (Mobile)<br>Emergency: 24/7 available</p>
                         </div>
                     </div>
 
                     <div class="contact-item">
-                        <span class="contact-icon">✉️</span>
+                        <div class="contact-item-icon">✉️</div>
                         <div>
-                            <h4>Email Us</h4>
-                            <p>info@alfanetworklk.com<br>support@alfanetworklk.com</p>
+                            <h4>Email Communications</h4>
+                            <p>info@alfanetworklk.com<br>support@alfanetworklk.com<br>Response within 2 hours</p>
                         </div>
                     </div>
 
                     <div class="contact-item">
-                        <span class="contact-icon">🕒</span>
+                        <div class="contact-item-icon">🕒</div>
                         <div>
                             <h4>Business Hours</h4>
-                            <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</p>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday: Emergency support only</p>
                         </div>
                     </div>
 
                     <div class="contact-item">
-                        <span class="contact-icon">💬</span>
+                        <div class="contact-item-icon">💬</div>
                         <div>
-                            <h4>Live Chat</h4>
-                            <p>Available 24/7 for instant support<br>Click the chat icon below</p>
+                            <h4>Instant Support</h4>
+                            <p>Live Chat: Available 24/7<br>WhatsApp: +94 77 123 4567<br>Telegram: @alfanetworklk</p>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 4rem;">
-                <div class="img-placeholder" style="max-width: 800px; margin: 0 auto; height: 150px;">
-                    <p>📱 Social Media & Communication Channels<br>
-                    <small>Social media icons, WhatsApp, Telegram, and other communication platform links</small></p>
                 </div>
             </div>
         </div>
@@ -1199,15 +1338,17 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <div class="img-placeholder" style="height: 100px; margin-bottom: 1rem;">
-                        <p>🛡️ Company Logo<br>
-                        <small>ALFA Network LK professional logo</small></p>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div class="logo">
+                            <div class="logo-icon">🛡️</div>
+                            <span>ALFA Network LK</span>
+                        </div>
                     </div>
-                    <p>Sri Lanka's premier provider of network and security testing tools. Building stronger digital defenses for a safer connected future.</p>
+                    <p>Sri Lanka's premier provider of professional cybersecurity tools and consulting services. Building stronger digital defenses for a safer connected future.</p>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
+                    <h3>Navigation</h3>
                     <a href="#home">Home</a>
                     <a href="#about">About Us</a>
                     <a href="#products">Products</a>
@@ -1218,67 +1359,89 @@
 
                 <div class="footer-section">
                     <h3>Product Categories</h3>
-                    <a href="#">SDR Devices</a>
-                    <a href="#">RFID/NFC Tools</a>
-                    <a href="#">Wi-Fi Testing</a>
-                    <a href="#">Bluetooth Tools</a>
-                    <a href="#">Accessories</a>
-                    <a href="#">Bundles</a>
+                    <a href="#products">SDR Platforms</a>
+                    <a href="#products">RFID/NFC Tools</a>
+                    <a href="#products">Wireless Testing</a>
+                    <a href="#products">Bluetooth Analysis</a>
+                    <a href="#products">Professional Accessories</a>
+                    <a href="#products">Complete Bundles</a>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Support</h3>
-                    <a href="#">Documentation</a>
-                    <a href="#">Tutorials</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Technical Support</a>
-                    <a href="#">Warranty</a>
-                    <a href="#">Returns</a>
+                    <h3>Professional Services</h3>
+                    <a href="#services">Penetration Testing</a>
+                    <a href="#services">Security Auditing</a>
+                    <a href="#services">Professional Training</a>
+                    <a href="#services">Technical Support</a>
+                    <a href="#services">Enterprise Solutions</a>
+                    <a href="#services">Consulting Services</a>
                 </div>
 
                 <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <div class="img-placeholder" style="height: 120px;">
-                        <p>🔗 Social Media Links<br>
-                        <small>Facebook, LinkedIn, Twitter, YouTube, WhatsApp, Telegram icons with links</small></p>
-                    </div>
+                    <h3>Support & Resources</h3>
+                    <a href="#">Technical Documentation</a>
+                    <a href="#">Video Tutorials</a>
+                    <a href="#">FAQ & Knowledge Base</a>
+                    <a href="#">Warranty Information</a>
+                    <a href="#">Return Policy</a>
+                    <a href="#">Professional Certification</a>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 ALFA Network LK (Pvt) Ltd. All rights reserved. | Privacy Policy | Terms of Service</p>
-                <p>🇱🇰 Proudly Sri Lankan | 🌍 Serving Global Cybersecurity Community</p>
+                <p>&copy; 2024 ALFA Network LK (Pvt) Ltd. All rights reserved. | Privacy Policy | Terms of Service | Professional Standards</p>
+                <p style="margin-top: 0.5rem;">🇱🇰 Proudly Sri Lankan • 🌍 Serving Global Cybersecurity Community • 🛡️ ISO 27001 Compliant</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Interactivity -->
-    <script>
-        // Animated Background Generation
-        function createParticles() {
-            const bgAnimation = document.getElementById('bgAnimation');
-            
-            // Create floating particles
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                bgAnimation.appendChild(particle);
-            }
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        ↑
+    </button>
 
-            // Create matrix rain
-            for (let i = 0; i < 20; i++) {
-                const matrix = document.createElement('div');
-                matrix.classList.add('matrix');
-                matrix.textContent = Math.random() > 0.5 ? '1' : '0';
-                matrix.style.left = Math.random() * 100 + '%';
-                matrix.style.animationDelay = Math.random() * 3 + 's';
-                matrix.style.fontSize = (Math.random() * 8 + 8) + 'px';
-                bgAnimation.appendChild(matrix);
-            }
+    <!-- JavaScript -->
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        // Load saved theme or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
         }
+
+        // Scroll to Top Button
+        const scrollToTop = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTop.classList.add('visible');
+            } else {
+                scrollToTop.classList.remove('visible');
+            }
+        });
+
+        scrollToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
         // Counter Animation
         function animateCounters() {
@@ -1294,92 +1457,149 @@
                         current = target;
                         clearInterval(timer);
                     }
-                    counter.textContent = Math.floor(current) + (target === 24 ? '/7' : target === 98 ? '%' : '+');
-                }, 20);
+                    const suffix = target === 24 ? '/7' : target === 98 ? '%' : '+';
+                    counter.textContent = Math.floor(current) + suffix;
+                }, 30);
             });
         }
 
-        // Scroll Animations
-        function handleScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Trigger counter animation for stats
+                    if (entry.target.querySelector('[data-count]')) {
+                        setTimeout(animateCounters, 200);
                     }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
+                }
             });
-        }
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
 
         // Smooth scrolling for navigation links
-        function initSmoothScrolling() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 70;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             });
-        }
+        });
+
+        // Active navigation link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
 
         // Form submission handler
-        function initFormHandler() {
-            document.querySelector('form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you within 24 hours.');
-                this.reset();
-            });
-        }
-
-        // Mobile menu toggle
-        function initMobileMenu() {
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navLinks = document.querySelector('.nav-links');
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            mobileMenu.addEventListener('click', function() {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            
+            // Simulate form submission
+            setTimeout(() => {
+                alert('Thank you for your professional consultation request! Our cybersecurity experts will review your requirements and respond within 2 business hours with a detailed proposal.');
+                this.reset();
+                
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+            }, 2000);
+        });
+
+        // Mobile menu functionality (basic implementation)
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            // Toggle mobile menu display
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
                 navLinks.style.flexDirection = 'column';
                 navLinks.style.position = 'absolute';
                 navLinks.style.top = '100%';
                 navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'rgba(26, 27, 58, 0.95)';
+                navLinks.style.right = '0';
+                navLinks.style.backgroundColor = 'var(--bg-overlay)';
                 navLinks.style.backdropFilter = 'blur(20px)';
                 navLinks.style.padding = '2rem';
-            });
-        }
-
-        // Initialize all functions when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            setTimeout(animateCounters, 1000);
-            handleScrollAnimations();
-            initSmoothScrolling();
-            initFormHandler();
-            initMobileMenu();
+                navLinks.style.gap = '1rem';
+                navLinks.style.borderTop = '1px solid var(--border-color)';
+            }
         });
 
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(10, 14, 39, 0.98)';
-            } else {
-                nav.style.background = 'rgba(26, 27, 58, 0.95)';
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            const navbar = document.querySelector('.navbar');
+            
+            if (!navbar.contains(e.target) && window.innerWidth <= 768) {
+                navLinks.style.display = 'none';
             }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'var(--bg-overlay)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            } else {
+                navbar.style.backgroundColor = 'var(--bg-overlay)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            }
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Trigger initial animations for elements in view
+            document.querySelectorAll('.fade-in').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                }
+            });
         });
     </script>
 </body>
