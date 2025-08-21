@@ -1636,5 +1636,25 @@
             });
         });
     </script>
+    <!-- ✅ EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("20P11kkmjCVlqT8tf"); // ✅ Your Public Key
+        })();
+    
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+    
+            emailjs.sendForm("service_xhaxr9r", "template_d8yb73e", this)
+                .then(function(response) {
+                    alert("✅ Your request has been sent successfully!");
+                    document.getElementById("contactForm").reset();
+                }, function(error) {
+                    alert("❌ Failed to send. Please try again later.");
+                    console.error("EmailJS Error:", error);
+                });
+        });
+    </script>
 </body>
 </html>
