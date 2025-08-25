@@ -1498,17 +1498,18 @@
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Trigger counter animation for stats
-                    if (entry.target.querySelector('[data-count]')) {
-                        setTimeout(animateCounters, 200);
-                    }
-                }
-            });
-        }, observerOptions);
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+
+            // Trigger counter animation for stats (only once)
+            if (entry.target.querySelector('[data-count]') && !entry.target.classList.contains('animated')) {
+                entry.target.classList.add('animated'); // Mark as animated
+                setTimeout(animateCounters, 200);
+            }
+        }
+    });
+}, observerOptions);
 
         // Observe all fade-in elements
         document.querySelectorAll('.fade-in').forEach(el => {
