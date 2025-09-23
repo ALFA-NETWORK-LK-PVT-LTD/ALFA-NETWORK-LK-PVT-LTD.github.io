@@ -850,15 +850,6 @@
             <div class="container">
                 <div class="filters-container">
                     <div class="filter-group">
-                        <select class="filter-select" id="categoryFilter">
-                            <option value="">All Categories</option>
-                            <option value="sdr">Software Defined Radio</option>
-                            <option value="rfid">RFID/NFC Tools</option>
-                            <option value="wireless">Wireless Security</option>
-                            <option value="bluetooth">Bluetooth Analysis</option>
-                            <option value="pentesting">Penetration Testing</option>
-                        </select>
-
                         <select class="filter-select" id="priceFilter">
                             <option value="">All Prices</option>
                             <option value="0-100">Under $100</option>
@@ -1368,11 +1359,11 @@
 
                 <div class="footer-section">
                     <h3>Product Categories</h3>
-                    <a href="#" onclick="filterProducts('sdr')">SDR Platforms</a>
-                    <a href="#" onclick="filterProducts('rfid')">RFID/NFC Tools</a>
-                    <a href="#" onclick="filterProducts('wireless')">Wireless Testing</a>
-                    <a href="#" onclick="filterProducts('bluetooth')">Bluetooth Analysis</a>
-                    <a href="#" onclick="filterProducts('pentesting')">Penetration Testing</a>
+                    <a href="#products">SDR Platforms</a>
+                    <a href="#products">RFID/NFC Tools</a>
+                    <a href="#products">Wireless Testing</a>
+                    <a href="#products">Bluetooth Analysis</a>
+                    <a href="#products">Penetration Testing</a>
                 </div>
 
                 <div class="footer-section">
@@ -1453,40 +1444,36 @@
 
         // Filter and Search Functionality
         const searchInput = document.getElementById('searchInput');
-        const categoryFilter = document.getElementById('categoryFilter');
         const priceFilter = document.getElementById('priceFilter');
         const productCount = document.getElementById('productCount');
         const productsGrid = document.getElementById('productsGrid');
 
-        function filterProducts(category = '') {
-            if (category) {
-                categoryFilter.value = category;
-            }
-
-            const searchTerm = searchInput.value.toLowerCase();
-            const selectedCategory = categoryFilter.value;
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
             const selectedPriceRange = priceFilter.value;
             const products = document.querySelectorAll('.product-card');
+
 
             let visibleCount = 0;
 
             products.forEach(product => {
                 const productTitle = product.querySelector('.product-title').textContent.toLowerCase();
                 const productDescription = product.querySelector('.product-description').textContent.toLowerCase();
+                const productCategory = product.querySelector('.product-category').textContent.toLowerCase();
                 const productCategories = product.getAttribute('data-category');
                 const productPrice = parseFloat(product.getAttribute('data-price'));
 
                 let showProduct = true;
 
-                // Search filter
-                if (searchTerm && !productTitle.includes(searchTerm) && !productDescription.includes(searchTerm)) {
+                // Search filter - search in title, description, and category
+                if (searchTerm &&
+                    !productTitle.includes(searchTerm) &&
+                    !productDescription.includes(searchTerm) &&
+                    !productCategory.includes(searchTerm) &&
+                    !productCategories.toLowerCase().includes(searchTerm)) {
                     showProduct = false;
                 }
 
-                // Category filter
-                if (selectedCategory && !productCategories.includes(selectedCategory)) {
-                    showProduct = false;
-                }
 
                 // Price filter
                 if (selectedPriceRange) {
@@ -1505,23 +1492,6 @@
             productCount.textContent = visibleCount;
         }
 
-        // Event listeners
-        searchInput.addEventListener('input', filterProducts);
-        categoryFilter.addEventListener('change', filterProducts);
-        priceFilter.addEventListener('change', filterProducts);
-
-        // Category card clicks
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const filter = card.getAttribute('data-filter');
-                filterProducts(filter);
-
-                // Scroll to products
-                document.querySelector('.products-section').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
 
         // Intersection Observer for animations
         const observerOptions = {
@@ -1575,6 +1545,11 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Set up event listeners
+            searchInput.addEventListener('input', filterProducts);
+            priceFilter.addEventListener('change', filterProducts);
+
+
             // Trigger initial animations for elements in view
             document.querySelectorAll('.fade-in').forEach(el => {
                 const rect = el.getBoundingClientRect();
