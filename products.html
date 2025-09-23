@@ -548,26 +548,33 @@
         }
 
         .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-            font-size: 0.85rem;
+            display: block;
+            font-size: 0.9rem;
         }
 
         .spec-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.25rem 0;
+            align-items: center;
+            padding: 0.5rem 0;
             border-bottom: 1px solid var(--border-color);
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
         }
 
         .spec-label {
             color: var(--text-muted);
+            font-weight: 500;
+            flex: 1;
         }
 
         .spec-value {
             color: var(--text-primary);
-            font-weight: 500;
+            font-weight: 600;
+            text-align: right;
+            margin-left: 1rem;
         }
 
         .product-actions {
@@ -715,6 +722,17 @@
             transform: translateY(0);
         }
 
+        /* Desktop improvements */
+        @media (min-width: 1200px) {
+            .specs-title {
+                font-size: 1rem;
+            }
+
+            .spec-item {
+                padding: 0.6rem 0;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .products-grid {
@@ -756,8 +774,21 @@
                 min-width: 200px;
             }
 
-            .specs-grid {
-                grid-template-columns: 1fr;
+            .spec-item {
+                padding: 0.4rem 0;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .spec-label {
+                margin-bottom: 0.2rem;
+                margin-left: 0;
+            }
+
+            .spec-value {
+                text-align: left;
+                margin-left: 0;
+                font-size: 0.85rem;
             }
 
             .product-actions {
@@ -852,11 +883,11 @@
                     <div class="filter-group">
                         <select class="filter-select" id="priceFilter">
                             <option value="">All Prices</option>
-                            <option value="0-100">Under $100</option>
-                            <option value="100-200">$100 - $200</option>
-                            <option value="200-300">$200 - $300</option>
-                            <option value="300-500">$300 - $500</option>
-                            <option value="500+">$500+</option>
+                            <option value="0-25000">Under Rs.25,000</option>
+                            <option value="25000-50000">Rs.25,000 - Rs.50,000</option>
+                            <option value="50000-75000">Rs.50,000 - Rs.75,000</option>
+                            <option value="75000-100000">Rs.75,000 - Rs.100,000</option>
+                            <option value="100000+">Rs.100,000+</option>
                         </select>
                     </div>
 
@@ -877,7 +908,7 @@
             <div class="container">
                 <div class="products-grid" id="productsGrid">
                     <!-- Flipper Zero -->
-                    <div class="product-card fade-in" data-category="rfid pentesting" data-price="169.99">
+                    <div class="product-card fade-in" data-category="rfid pentesting" data-price="50500">
                         <div class="product-badge">Best Seller</div>
                         <div class="product-image">
                             <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1756206799/Flipper_Zero_nwmqgc.png" alt="Flipper Zero">
@@ -886,7 +917,7 @@
                             <div class="product-category">Multi-Protocol Pentesting</div>
                             <h3 class="product-title">Flipper Zero</h3>
                             <p class="product-description">The ultimate multi-protocol penetration testing tool for RFID, NFC, and Sub-GHz security testing. Open-source platform with GPIO expansion for custom modules.</p>
-                            <div class="product-price">$169.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.50,500/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -915,7 +946,7 @@
                     </div>
 
                     <!-- HackRF One -->
-                    <div class="product-card fade-in" data-category="sdr" data-price="299.99">
+                    <div class="product-card fade-in" data-category="sdr" data-price="89000">
                         <div class="product-badge">Professional</div>
                         <div class="product-image">
                             <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1756206799/HackRF_One_gw2lgm.png" alt="HackRF One">
@@ -924,7 +955,7 @@
                             <div class="product-category">Software Defined Radio</div>
                             <h3 class="product-title">HackRF One SDR</h3>
                             <p class="product-description">Professional-grade Software Defined Radio platform for comprehensive RF analysis and testing. Full-duplex operation with extensive frequency coverage for advanced users.</p>
-                            <div class="product-price">$299.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.89,000/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -953,7 +984,7 @@
                     </div>
 
                     <!-- Wi-Fi Pineapple -->
-                    <div class="product-card fade-in" data-category="wireless" data-price="199.99">
+                    <div class="product-card fade-in" data-category="wireless" data-price="59500">
                         <div class="product-badge">Enterprise</div>
                         <div class="product-image">
                             <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1756206798/Wi-Fi_Pineapple_cwqdce.png" alt="Wi-Fi Pineapple">
@@ -962,7 +993,7 @@
                             <div class="product-category">Wireless Security Auditing</div>
                             <h3 class="product-title">Wi-Fi Pineapple Mark VII</h3>
                             <p class="product-description">Advanced wireless security auditing platform with dual-band 802.11ac support. Features web-based management interface and enterprise-grade campaign tracking.</p>
-                            <div class="product-price">$199.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.59,500/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -991,7 +1022,7 @@
                     </div>
 
                     <!-- RTL-SDR Kit -->
-                    <div class="product-card fade-in" data-category="sdr" data-price="79.99">
+                    <div class="product-card fade-in" data-category="sdr" data-price="23800">
                         <div class="product-badge">Value Pack</div>
                         <div class="product-image">
                             <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1756206798/RTL-SDR_Kit_eql7kg.png" alt="RTL-SDR Kit">
@@ -1000,7 +1031,7 @@
                             <div class="product-category">Entry-Level SDR</div>
                             <h3 class="product-title">RTL-SDR Pro Bundle</h3>
                             <p class="product-description">Complete entry-level Software Defined Radio bundle with multiple antennas and accessories. Perfect for learning RF fundamentals and spectrum monitoring.</p>
-                            <div class="product-price">$79.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.23,800/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -1029,7 +1060,7 @@
                     </div>
 
                     <!-- Ubertooth One -->
-                    <div class="product-card fade-in" data-category="bluetooth" data-price="124.99">
+                    <div class="product-card fade-in" data-category="bluetooth" data-price="37200">
                         <div class="product-image">
                             <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1756206798/Ubertooth_One_ozk5iz.png" alt="Ubertooth One">
                         </div>
@@ -1037,7 +1068,7 @@
                             <div class="product-category">Bluetooth Analysis</div>
                             <h3 class="product-title">Ubertooth One</h3>
                             <p class="product-description">Specialized Bluetooth monitoring and analysis platform for 2.4 GHz spectrum research. Open source platform ideal for Bluetooth security assessment and research.</p>
-                            <div class="product-price">$124.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.37,200/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -1066,7 +1097,7 @@
                     </div>
 
                     <!-- Proxmark3 RDV4 -->
-                    <div class="product-card fade-in" data-category="rfid" data-price="349.99">
+                    <div class="product-card fade-in" data-category="rfid" data-price="104000">
                         <div class="product-badge">Professional</div>
                         <div class="product-image">
                             <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1756206799/Proxmark3_RDV4_faajsy.png" alt="Proxmark3 RDV4">
@@ -1075,7 +1106,7 @@
                             <div class="product-category">Advanced RFID/NFC</div>
                             <h3 class="product-title">Proxmark3 RDV4</h3>
                             <p class="product-description">Advanced RFID/NFC analysis platform with standalone operation mode. Professional-grade hardware with battery power and Bluetooth connectivity for field operations.</p>
-                            <div class="product-price">$349.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.104,000/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -1104,7 +1135,7 @@
                     </div>
 
                     <!-- PortaPack H2+ -->
-                    <div class="product-card fade-in" data-category="sdr" data-price="189.99">
+                    <div class="product-card fade-in" data-category="sdr" data-price="56500">
                         <div class="product-badge">Portable</div>
                         <div class="product-image">
                             <div style="background: linear-gradient(135deg, #4A90E2, #7B68EE); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">📡</div>
@@ -1113,7 +1144,7 @@
                             <div class="product-category">Portable SDR</div>
                             <h3 class="product-title">PortaPack H2+</h3>
                             <p class="product-description">Portable SDR solution with touchscreen interface. Standalone operation without PC requirement, perfect for field RF analysis and spectrum monitoring applications.</p>
-                            <div class="product-price">$189.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.56,500/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -1142,7 +1173,7 @@
                     </div>
 
                     <!-- USB Rubber Ducky -->
-                    <div class="product-card fade-in" data-category="pentesting" data-price="89.99">
+                    <div class="product-card fade-in" data-category="pentesting" data-price="26800">
                         <div class="product-image">
                             <div style="background: linear-gradient(135deg, #FFD700, #FFA500); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">🦆</div>
                         </div>
@@ -1150,7 +1181,7 @@
                             <div class="product-category">Keystroke Injection</div>
                             <h3 class="product-title">USB Rubber Ducky</h3>
                             <p class="product-description">Programmable USB device for keystroke injection attacks. Essential tool for physical penetration testing and security awareness demonstrations.</p>
-                            <div class="product-price">$89.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.26,800/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -1179,7 +1210,7 @@
                     </div>
 
                     <!-- Bash Bunny -->
-                    <div class="product-card fade-in" data-category="pentesting" data-price="119.99">
+                    <div class="product-card fade-in" data-category="pentesting" data-price="35700">
                         <div class="product-image">
                             <div style="background: linear-gradient(135deg, #2E8B57, #32CD32); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">🐰</div>
                         </div>
@@ -1187,7 +1218,7 @@
                             <div class="product-category">Multi-Function Attack</div>
                             <h3 class="product-title">Bash Bunny Mark II</h3>
                             <p class="product-description">Multi-function USB attack platform with multiple payload modes. Advanced physical penetration testing tool with network access capabilities.</p>
-                            <div class="product-price">$119.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.35,700/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -1216,7 +1247,7 @@
                     </div>
 
                     <!-- LAN Turtle -->
-                    <div class="product-card fade-in" data-category="pentesting wireless" data-price="59.99">
+                    <div class="product-card fade-in" data-category="pentesting wireless" data-price="17850">
                         <div class="product-image">
                             <div style="background: linear-gradient(135deg, #008B8B, #20B2AA); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">🐢</div>
                         </div>
@@ -1224,7 +1255,7 @@
                             <div class="product-category">Network Implant</div>
                             <h3 class="product-title">LAN Turtle</h3>
                             <p class="product-description">Covert network access implant for persistent network penetration testing. Tiny form factor with powerful remote access capabilities.</p>
-                            <div class="product-price">$59.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.17,850/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -1253,7 +1284,7 @@
                     </div>
 
                     <!-- YardStick One -->
-                    <div class="product-card fade-in" data-category="sdr" data-price="149.99">
+                    <div class="product-card fade-in" data-category="sdr" data-price="44600">
                         <div class="product-image">
                             <div style="background: linear-gradient(135deg, #8A2BE2, #9400D3); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">📶</div>
                         </div>
@@ -1261,7 +1292,7 @@
                             <div class="product-category">Sub-GHz Testing</div>
                             <h3 class="product-title">YardStick One</h3>
                             <p class="product-description">Sub-GHz radio frequency testing platform for IoT and wireless device security assessment. Specialized tool for sub-1GHz protocol analysis and testing.</p>
-                            <div class="product-price">$149.99 <span class="price-note">+ shipping</span></div>
+                            <div class="product-price">Rs.44,600/= <span class="price-note">+ shipping</span></div>
 
                             <div class="product-specs">
                                 <div class="specs-title">Technical Specifications</div>
@@ -1280,6 +1311,500 @@
                                 <li>Wireless protocol analysis</li>
                                 <li>Python-based control software</li>
                                 <li>Research and development tool</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ALFA AWUS036NHA -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="25500">
+                        <div class="product-badge">High Gain</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #FF6B35, #F7931E); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">📡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">High Power Wi-Fi Adapter</div>
+                            <h3 class="product-title">ALFA AWUS036NHA</h3>
+                            <p class="product-description">High power 802.11b/g/n USB Wi-Fi adapter with external antenna connector. Perfect for long-range wireless penetration testing and security auditing.</p>
+                            <div class="product-price">Rs.25,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11b/g/n</span></div>
+                                    <div class="spec-item"><span class="spec-label">Power:</span><span class="spec-value">1000mW (30dBm)</span></div>
+                                    <div class="spec-item"><span class="spec-label">Antenna:</span><span class="spec-value">RP-SMA connector</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 2.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>High power 1000mW transmission</li>
+                                <li>802.11b/g/n wireless standards</li>
+                                <li>External antenna connector (RP-SMA)</li>
+                                <li>Long-range wireless penetration testing</li>
+                                <li>Kali Linux compatible</li>
+                                <li>Monitor mode and packet injection support</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ALFA AWUS036ACH -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="31825">
+                        <div class="product-badge">AC Dual Band</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #4ECDC4, #44A08D); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">📶</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Dual Band AC Wi-Fi Adapter</div>
+                            <h3 class="product-title">ALFA AWUS036ACH</h3>
+                            <p class="product-description">High power dual-band 802.11ac USB Wi-Fi adapter with 2.4GHz and 5GHz support. Advanced wireless security testing with modern AC standards.</p>
+                            <div class="product-price">Rs.31,825/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac</span></div>
+                                    <div class="spec-item"><span class="spec-label">Frequency:</span><span class="spec-value">2.4GHz & 5GHz</span></div>
+                                    <div class="spec-item"><span class="spec-label">Power:</span><span class="spec-value">1000mW (30dBm)</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 3.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Dual-band 2.4GHz and 5GHz operation</li>
+                                <li>802.11ac wireless standard support</li>
+                                <li>High power 1000mW transmission</li>
+                                <li>USB 3.0 for superior performance</li>
+                                <li>External antenna connectors</li>
+                                <li>Advanced wireless security testing</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ALFA AWUS036AC -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="28500">
+                        <div class="product-badge">AC Standard</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">📡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">AC Wi-Fi Adapter</div>
+                            <h3 class="product-title">ALFA AWUS036AC</h3>
+                            <p class="product-description">Compact 802.11ac USB Wi-Fi adapter with dual-band support. Ideal for wireless security testing and penetration testing with modern AC capabilities.</p>
+                            <div class="product-price">Rs.28,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac</span></div>
+                                    <div class="spec-item"><span class="spec-label">Frequency:</span><span class="spec-value">2.4GHz & 5GHz</span></div>
+                                    <div class="spec-item"><span class="spec-label">Speed:</span><span class="spec-value">867Mbps (5GHz)</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 3.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>802.11ac dual-band wireless adapter</li>
+                                <li>867Mbps on 5GHz, 300Mbps on 2.4GHz</li>
+                                <li>USB 3.0 high-speed interface</li>
+                                <li>Monitor mode and packet injection</li>
+                                <li>Compact and portable design</li>
+                                <li>Professional wireless testing tool</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ALFA AWUS036ACM -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="28500">
+                        <div class="product-badge">Compact AC</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #ffecd2, #fcb69f); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">📶</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Compact AC Wi-Fi Adapter</div>
+                            <h3 class="product-title">ALFA AWUS036ACM</h3>
+                            <p class="product-description">Mini-sized 802.11ac USB Wi-Fi adapter with dual-band functionality. Perfect for discrete wireless security assessments and portable penetration testing.</p>
+                            <div class="product-price">Rs.28,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac</span></div>
+                                    <div class="spec-item"><span class="spec-label">Frequency:</span><span class="spec-value">2.4GHz & 5GHz</span></div>
+                                    <div class="spec-item"><span class="spec-label">Form Factor:</span><span class="spec-value">Mini USB</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 3.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Compact mini USB form factor</li>
+                                <li>Dual-band 802.11ac support</li>
+                                <li>Discrete wireless testing capability</li>
+                                <li>Monitor mode and injection support</li>
+                                <li>Portable penetration testing tool</li>
+                                <li>High-speed USB 3.0 connectivity</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ALFA AWUS036ACHM -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="30000">
+                        <div class="product-badge">High Power AC</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #a8edea, #fed6e3); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">📡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">High Power AC Wi-Fi Adapter</div>
+                            <h3 class="product-title">ALFA AWUS036ACHM</h3>
+                            <p class="product-description">Enhanced high-power 802.11ac USB Wi-Fi adapter with dual-band support and improved antenna design. Professional-grade wireless security testing tool.</p>
+                            <div class="product-price">Rs.30,000/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac</span></div>
+                                    <div class="spec-item"><span class="spec-label">Frequency:</span><span class="spec-value">2.4GHz & 5GHz</span></div>
+                                    <div class="spec-item"><span class="spec-label">Power:</span><span class="spec-value">High Power Output</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 3.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Enhanced high-power AC transmission</li>
+                                <li>Dual-band wireless penetration testing</li>
+                                <li>Improved antenna design</li>
+                                <li>Professional wireless security auditing</li>
+                                <li>Monitor mode and packet injection</li>
+                                <li>USB 3.0 high-speed interface</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ALFA AWUS1900 -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="35000">
+                        <div class="product-badge">Enterprise Grade</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #ff9a9e, #fad0c4); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">🚀</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Enterprise Wi-Fi Adapter</div>
+                            <h3 class="product-title">ALFA AWUS1900</h3>
+                            <p class="product-description">Enterprise-grade 802.11ac USB Wi-Fi adapter with maximum performance. Professional wireless security testing with enterprise-level capabilities and range.</p>
+                            <div class="product-price">Rs.35,000/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac</span></div>
+                                    <div class="spec-item"><span class="spec-label">Speed:</span><span class="spec-value">1900Mbps Total</span></div>
+                                    <div class="spec-item"><span class="spec-label">Power:</span><span class="spec-value">Enterprise Grade</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 3.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Enterprise-grade wireless performance</li>
+                                <li>1900Mbps maximum throughput</li>
+                                <li>Professional security testing platform</li>
+                                <li>Extended range capabilities</li>
+                                <li>Advanced antenna technology</li>
+                                <li>Enterprise wireless penetration testing</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ALFA AWUS036AXM -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="29500">
+                        <div class="product-badge">Wi-Fi 6</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #84fab0, #8fd3f4); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">🔮</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Wi-Fi 6 Adapter</div>
+                            <h3 class="product-title">ALFA AWUS036AXM</h3>
+                            <p class="product-description">Next-generation Wi-Fi 6 (802.11ax) USB adapter with advanced security testing capabilities. Cutting-edge wireless penetration testing for modern networks.</p>
+                            <div class="product-price">Rs.29,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac/ax</span></div>
+                                    <div class="spec-item"><span class="spec-label">Technology:</span><span class="spec-value">Wi-Fi 6 (AX)</span></div>
+                                    <div class="spec-item"><span class="spec-label">Frequency:</span><span class="spec-value">2.4GHz & 5GHz</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 3.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Wi-Fi 6 (802.11ax) technology</li>
+                                <li>Next-generation wireless testing</li>
+                                <li>Advanced security assessment capabilities</li>
+                                <li>Modern network penetration testing</li>
+                                <li>Dual-band operation</li>
+                                <li>Future-proof wireless adapter</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ALFA AWUS036AXML -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="31500">
+                        <div class="product-badge">Wi-Fi 6 Long Range</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #fa709a, #fee140); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">🌟</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Wi-Fi 6 Long Range Adapter</div>
+                            <h3 class="product-title">ALFA AWUS036AXML</h3>
+                            <p class="product-description">Extended range Wi-Fi 6 (802.11ax) USB adapter with enhanced antenna system. Ultimate wireless penetration testing tool for long-distance assessments.</p>
+                            <div class="product-price">Rs.31,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac/ax</span></div>
+                                    <div class="spec-item"><span class="spec-label">Technology:</span><span class="spec-value">Wi-Fi 6 (AX)</span></div>
+                                    <div class="spec-item"><span class="spec-label">Range:</span><span class="spec-value">Extended Long Range</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 3.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Wi-Fi 6 with extended range capability</li>
+                                <li>Enhanced antenna system design</li>
+                                <li>Long-distance wireless penetration testing</li>
+                                <li>Advanced 802.11ax security assessment</li>
+                                <li>Professional long-range testing tool</li>
+                                <li>Ultimate wireless security platform</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atheros AR9271 Single Antenna -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="8500">
+                        <div class="product-badge">Kali Native</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #36D1DC, #5B86E5); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">📶</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Atheros AR9271 Adapter</div>
+                            <h3 class="product-title">Atheros AR9271 USB WiFi Adapter (6dBi Antenna)</h3>
+                            <p class="product-description">Native Kali Linux compatible USB wireless adapter with Atheros AR9271 chipset. No driver installation required, perfect for penetration testing and aircrack-ng suite.</p>
+                            <div class="product-price">Rs.8,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Chipset:</span><span class="spec-value">Atheros AR9271</span></div>
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11b/g/n</span></div>
+                                    <div class="spec-item"><span class="spec-label">Speed:</span><span class="spec-value">Up to 150Mbps</span></div>
+                                    <div class="spec-item"><span class="spec-label">Antenna:</span><span class="spec-value">6dBi External</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Native Kali Linux support (no drivers needed)</li>
+                                <li>Monitor mode and packet injection support</li>
+                                <li>aircrack-ng suite compatibility</li>
+                                <li>6dBi external antenna included</li>
+                                <li>Works with virtual machines and main OS</li>
+                                <li>Frequency range: 2.412 - 2.483 GHz</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atheros AR9271 Dual Antenna -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="12500">
+                        <div class="product-badge">Dual Antenna</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">📡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Atheros AR9271 Dual Antenna</div>
+                            <h3 class="product-title">Atheros AR9271 USB WiFi Adapter (Dual 6dBi Antenna)</h3>
+                            <p class="product-description">Enhanced Atheros AR9271 adapter with dual 6dBi antennas for improved range and signal strength. Native Kali Linux support with advanced penetration testing capabilities.</p>
+                            <div class="product-price">Rs.12,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Chipset:</span><span class="spec-value">Atheros AR9271</span></div>
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11b/g/n</span></div>
+                                    <div class="spec-item"><span class="spec-label">Speed:</span><span class="spec-value">Up to 150Mbps</span></div>
+                                    <div class="spec-item"><span class="spec-label">Antennas:</span><span class="spec-value">2x 6dBi External</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Dual 6dBi external antennas for enhanced range</li>
+                                <li>Native Kali Linux support (no drivers needed)</li>
+                                <li>Monitor mode and packet injection support</li>
+                                <li>aircrack-ng suite compatibility</li>
+                                <li>Improved signal strength and coverage</li>
+                                <li>Works with both VM and main OS installations</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Realtek RTL8812AU Single Antenna -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="15500">
+                        <div class="product-badge">Dual Band AC</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #11998e, #38ef7d); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">🚀</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Realtek RTL8812AU Adapter</div>
+                            <h3 class="product-title">Realtek RTL8812AU Dual Band WiFi Adapter (5dBi Antenna)</h3>
+                            <p class="product-description">High-performance dual-band 802.11ac adapter with Realtek RTL8812AU chipset. Supports 2.4GHz and 5GHz frequencies with advanced penetration testing capabilities.</p>
+                            <div class="product-price">Rs.15,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Chipset:</span><span class="spec-value">Realtek RTL8812AU</span></div>
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac</span></div>
+                                    <div class="spec-item"><span class="spec-label">Speed:</span><span class="spec-value">Up to 867Mbps (AC)</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 3.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Dual-band 2.4GHz and 5GHz support</li>
+                                <li>802.11ac high-speed wireless standard</li>
+                                <li>Monitor mode and packet injection support</li>
+                                <li>aircrack-ng suite compatibility</li>
+                                <li>5dBi external antenna included</li>
+                                <li>Kali Linux 2017.1+ support</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Realtek RTL8812AU Dual Antenna -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="22500">
+                        <div class="product-badge">High Performance</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #fc4a1a, #f7b733); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">⚡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Realtek RTL8812AU High Performance</div>
+                            <h3 class="product-title">Realtek RTL8812AU Dual Band WiFi Adapter (Dual 6dBi Antenna)</h3>
+                            <p class="product-description">Premium dual-band adapter with dual 6dBi antennas and USB base station. Maximum performance for professional wireless penetration testing and security assessments.</p>
+                            <div class="product-price">Rs.22,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Chipset:</span><span class="spec-value">Realtek RTL8812AU</span></div>
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac</span></div>
+                                    <div class="spec-item"><span class="spec-label">Speed:</span><span class="spec-value">Up to 1200Mbps</span></div>
+                                    <div class="spec-item"><span class="spec-label">Antennas:</span><span class="spec-value">2x 6dBi + USB Base</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>Dual 6dBi external antennas with USB base</li>
+                                <li>1200Mbps maximum throughput</li>
+                                <li>Professional desktop wireless adapter</li>
+                                <li>Monitor mode and packet injection support</li>
+                                <li>Complete package with manual and accessories</li>
+                                <li>Optimized for professional penetration testing</li>
+                            </ul>
+
+                            <div class="product-actions">
+                                <a href="index.html#contact" class="btn btn-primary">Request Quote</a>
+                                <a href="#" class="btn btn-secondary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MediaTek MT7612U -->
+                    <div class="product-card fade-in" data-category="wireless" data-price="18500">
+                        <div class="product-badge">Ultra High Power</div>
+                        <div class="product-image">
+                            <div style="background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; height: 100%;">🔥</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">MediaTek MT7612U High Power</div>
+                            <h3 class="product-title">MediaTek MT7612U 1300Mbps High Power WiFi Adapter (4x 6dBi Antennas)</h3>
+                            <p class="product-description">Ultra high-power dual-band wireless adapter with 4 external 6dBi antennas. Professional-grade penetration testing platform with exceptional range and signal strength.</p>
+                            <div class="product-price">Rs.18,500/= <span class="price-note">+ shipping</span></div>
+
+                            <div class="product-specs">
+                                <div class="specs-title">Technical Specifications</div>
+                                <div class="specs-grid">
+                                    <div class="spec-item"><span class="spec-label">Chipset:</span><span class="spec-value">MediaTek MT7612U</span></div>
+                                    <div class="spec-item"><span class="spec-label">Standards:</span><span class="spec-value">802.11a/b/g/n/ac</span></div>
+                                    <div class="spec-item"><span class="spec-label">Speed:</span><span class="spec-value">Up to 1300Mbps</span></div>
+                                    <div class="spec-item"><span class="spec-label">Interface:</span><span class="spec-value">USB 3.0/2.0</span></div>
+                                </div>
+                            </div>
+
+                            <ul class="product-features">
+                                <li>4x 6dBi external dual-frequency antennas</li>
+                                <li>1300Mbps high-speed wireless performance</li>
+                                <li>Dual-band 2.4GHz/5.8GHz compatibility</li>
+                                <li>100% Kali Linux monitor mode & packet injection</li>
+                                <li>Excellent wall penetration and signal strength</li>
+                                <li>Complete package with extension cable and manual</li>
                             </ul>
 
                             <div class="product-actions">
@@ -1477,9 +2002,9 @@
 
                 // Price filter
                 if (selectedPriceRange) {
-                    const [min, max] = selectedPriceRange.split('-').map(p => p === '500+' ? 1000 : parseFloat(p));
-                    if (selectedPriceRange === '500+') {
-                        if (productPrice < 500) showProduct = false;
+                    const [min, max] = selectedPriceRange.split('-').map(p => p === '100000+' ? 200000 : parseFloat(p));
+                    if (selectedPriceRange === '100000+') {
+                        if (productPrice < 100000) showProduct = false;
                     } else if (productPrice < min || productPrice > max) {
                         showProduct = false;
                     }
