@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site Under Development | Alfa Network LK</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Matrix Background */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+    }
+
+    /* Glass Overlay */
+    .glass-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px) brightness(1.1);
+      -webkit-backdrop-filter: blur(6px) brightness(1.1);
+      z-index: 5;
+      pointer-events: none;
+      animation: fadeOverlay 2s ease forwards;
+    }
+
+    @keyframes fadeOverlay {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Content Fade-in */
+    .fade-in {
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Glow Text */
+    .glow-text {
+      text-shadow: 0 0 15px rgba(0, 255, 200, 0.8), 0 0 25px rgba(0, 255, 200, 0.6);
+    }
+  </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen text-white overflow-hidden">
+
+  <!-- Matrix Background -->
+  <canvas id="matrix"></canvas>
+
+  <!-- Frosted Glass Overlay -->
+  <div class="glass-overlay"></div>
+
+  <!-- Content -->
+  <div class="content text-center px-6 fade-in z-10">
+    <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-300 mb-4 glow-text">
+      Site Under Development
+    </h1>
+    <p class="text-lg sm:text-xl text-gray-300 mb-6 max-w-xl mx-auto">
+      Our cybersecurity engineers are fortifying the digital perimeter. Stay tuned for our official launch!
+    </p>
+
+    <!-- Countdown -->
+    <div id="countdown" class="text-3xl font-semibold text-green-400 mb-8"></div>
+
+    <!-- Contact Us Button -->
+    <a href="https://wa.me/+94752550704"
+      class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
+      Contact Us
+    </a>
+
+    <!-- Footer -->
+    <p class="mt-10 text-sm text-gray-400">
+      © <span id="year"></span> Alfa Network LK. All Rights Reserved.
+    </p>
+  </div>
+
+  <script>
+    // Countdown Timer
+    function updateCountdown() {
+      const launchDate = new Date("2025-03-01T00:00:00").getTime();
+      const now = new Date().getTime();
+      const diff = launchDate - now;
+
+      const countdownEl = document.getElementById("countdown");
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        countdownEl.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      } else {
+        countdownEl.innerText = "We're Live!";
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Year auto update
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Matrix Background Animation
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01#@$%&*ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00FF9C";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 33);
+
+    // Responsive Canvas Resize
+    window.addEventListener("resize", () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+  </script>
+</body>
+
+</html>
