@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lankan Data Patterns - Regular Expressions - ALFA Network LK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/dkj22lm1g/image/upload/v1755632209/ALFA_NETWORKLK-new-removebg-preview_ep3xzv.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-color: #3B82F6;
+            --secondary-color: #10B981;
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-tertiary: #334155;
+            --bg-card: #1E293B;
+            --bg-overlay: rgba(15, 23, 42, 0.95);
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --text-muted: #94A3B8;
+            --border-color: #334155;
+            --border-accent: #3B82F6;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        [data-theme="light"] {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --bg-tertiary: #E2E8F0;
+            --bg-card: #FFFFFF;
+            --bg-overlay: rgba(255, 255, 255, 0.95);
+            --text-primary: #0F172A;
+            --text-secondary: #334155;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background-color: var(--bg-overlay);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 70px;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 0.75rem;
+            font-size: 1.5rem; font-weight: 700;
+            color: var(--text-primary); text-decoration: none;
+        }
+        .logo-image { height: 40px; width: auto; object-fit: contain; }
+        .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none;
+            font-weight: 500; position: relative; padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .theme-toggle {
+            background: none; border: none; color: var(--text-secondary);
+            cursor: pointer; padding: 0.5rem; border-radius: 8px;
+            transition: all 0.3s ease; font-size: 1.2rem;
+        }
+        .theme-toggle:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        .mobile-menu-btn {
+            display: none; background: none; border: none;
+            color: var(--text-primary); font-size: 1.5rem;
+            cursor: pointer; padding: 0.5rem;
+        }
+        .main-content { padding-top: 70px; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .hero {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 4rem 0; text-align: center; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+            opacity: 0.1;
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800; margin-bottom: 1rem; line-height: 1.1;
+        }
+        .hero .highlight { color: var(--primary-color); }
+        .hero p {
+            font-size: 1.1rem; color: var(--text-secondary);
+            margin-bottom: 2rem; max-width: 800px;
+            margin-left: auto; margin-right: auto;
+        }
+        .patterns-section { padding: 3rem 0; }
+        .patterns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem; margin-top: 2rem;
+        }
+        .pattern-card {
+            background-color: var(--bg-card); border-radius: 16px;
+            border: 1px solid var(--border-color); box-shadow: var(--shadow-md);
+            overflow: hidden; transition: all 0.3s ease;
+        }
+        .pattern-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--border-accent);
+        }
+        .pattern-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1.5rem; color: white;
+        }
+        .pattern-title {
+            font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .pattern-description { font-size: 0.95rem; opacity: 0.95; }
+        .pattern-body { padding: 2rem; }
+        .pattern-examples { margin-bottom: 1.5rem; }
+        .examples-title {
+            font-size: 0.9rem; font-weight: 600;
+            color: var(--text-secondary); margin-bottom: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .example-item {
+            padding: 0.5rem 0.75rem;
+            background-color: var(--bg-secondary);
+            border-radius: 6px; margin-bottom: 0.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem; color: var(--text-primary);
+        }
+        .regex-container { position: relative; margin-top: 1.5rem; }
+        .regex-label {
+            font-size: 0.9rem; font-weight: 600;
+            color: var(--text-secondary); margin-bottom: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .regex-box {
+            position: relative; background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 1rem; font-family: 'Courier New', monospace;
+            font-size: 0.95rem; color: var(--secondary-color);
+            overflow-x: auto; word-break: break-all;
+        }
+        .copy-btn {
+            position: absolute; top: 0.5rem; right: 0.5rem;
+            background-color: var(--primary-color); color: white;
+            border: none; padding: 0.5rem 1rem; border-radius: 6px;
+            cursor: pointer; font-size: 0.85rem; font-weight: 600;
+            transition: all 0.3s ease; display: flex;
+            align-items: center; gap: 0.5rem;
+        }
+        .copy-btn:hover {
+            background-color: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .copy-btn.copied { background-color: var(--secondary-color); }
+        .copy-icon { font-size: 1rem; }
+        .footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 1rem; margin-top: 4rem;
+        }
+        .footer-content { text-align: center; color: var(--text-muted); }
+        .footer-links {
+            display: flex; justify-content: center;
+            gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--primary-color); }
+        .toast {
+            position: fixed; bottom: 2rem; right: 2rem;
+            background-color: var(--secondary-color); color: white;
+            padding: 1rem 1.5rem; border-radius: 8px;
+            box-shadow: var(--shadow-xl); display: none;
+            align-items: center; gap: 0.75rem; z-index: 2000;
+            animation: slideIn 0.3s ease;
+        }
+        .toast.show { display: flex; }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .patterns-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .copy-btn {
+                position: static; width: 100%;
+                margin-top: 0.5rem; justify-content: center;
+            }
+            .regex-box { padding-right: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <img src="https://res.cloudinary.com/dkj22lm1g/image/upload/v1755632209/ALFA_NETWORKLK-new-removebg-preview_ep3xzv.png" alt="ALFA Network LK Logo" class="logo-image">
+                <span>ALFA Network LK</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../products.html">Products</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="patterns.html" class="active">Resources</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </nav>
+    <div class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Sri Lankan <span class="highlight">Data Patterns</span></h1>
+                <p>Comprehensive collection of regular expressions for validating and matching Sri Lankan data formats. Use these patterns for data validation, extraction, and security testing in your applications.</p>
+            </div>
+        </section>
+        <section class="patterns-section">
+            <div class="container">
+                <div class="patterns-grid">
+                    <!-- NIC Old Format -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">NIC Number (Old Format)</h3>
+                            <p class="pattern-description">Old Sri Lankan National Identity Card number format (9 digits + V/X)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">912345678V</div>
+                                <div class="example-item">852345678X</div>
+                                <div class="example-item">197123456V</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-nic-old">^[0-9]{9}[VvXx]$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-nic-old')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- NIC New Format -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">NIC Number (New Format)</h3>
+                            <p class="pattern-description">New Sri Lankan National Identity Card number format (12 digits)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">199123456789</div>
+                                <div class="example-item">200012345678</div>
+                                <div class="example-item">198567891234</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-nic-new">^[0-9]{12}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-nic-new')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- NIC Combined -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">NIC Number (Combined)</h3>
+                            <p class="pattern-description">Matches both old and new NIC formats</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">912345678V</div>
+                                <div class="example-item">199123456789</div>
+                                <div class="example-item">852345678X</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-nic-combined">^([0-9]{9}[VvXx]|[0-9]{12})$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-nic-combined')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Passport Number -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Passport Number</h3>
+                            <p class="pattern-description">Sri Lankan passport number format (N followed by 7 digits)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">N1234567</div>
+                                <div class="example-item">N9876543</div>
+                                <div class="example-item">N0123456</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-passport">^[Nn][0-9]{7}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-passport')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile Number -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Mobile Number</h3>
+                            <p class="pattern-description">Sri Lankan mobile phone numbers (with or without country code)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">0771234567</div>
+                                <div class="example-item">+94771234567</div>
+                                <div class="example-item">94771234567</div>
+                                <div class="example-item">0752345678</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-mobile">^(?:\+94|94|0)?7[01245678][0-9]{7}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-mobile')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Landline Number -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Landline Number</h3>
+                            <p class="pattern-description">Sri Lankan landline phone numbers</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">0112345678</div>
+                                <div class="example-item">+94112345678</div>
+                                <div class="example-item">0812345678</div>
+                                <div class="example-item">0372345678</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-landline">^(?:\+94|94|0)?[1-9][0-9]{8}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-landline')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bank Account Number -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Bank Account Number</h3>
+                            <p class="pattern-description">Sri Lankan bank account numbers (typically 10-16 digits)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">1234567890</div>
+                                <div class="example-item">123456789012345</div>
+                                <div class="example-item">12345678901234</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-bank-account">^[0-9]{10,16}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-bank-account')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TIN Number -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">TIN Number</h3>
+                            <p class="pattern-description">Tax Identification Number (9 digits)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">123456789</div>
+                                <div class="example-item">987654321</div>
+                                <div class="example-item">112233445</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-tin">^[0-9]{9}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-tin')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Credit Card Number -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Credit/Debit Card Number</h3>
+                            <p class="pattern-description">Standard credit and debit card numbers (13-19 digits, with optional spaces or hyphens)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">4532015112830366</div>
+                                <div class="example-item">4532 0151 1283 0366</div>
+                                <div class="example-item">5425-2334-3010-9903</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-card">^(?:\d{4}[-\s]?){3}\d{4}(?:\d{3})?$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-card')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Visa Card -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Visa Card Number</h3>
+                            <p class="pattern-description">Visa credit/debit card format (starts with 4, 13 or 16 digits)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">4532015112830366</div>
+                                <div class="example-item">4916338506082832</div>
+                                <div class="example-item">4485383550284604</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-visa">^4[0-9]{12}(?:[0-9]{3})?$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-visa')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mastercard -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Mastercard Number</h3>
+                            <p class="pattern-description">Mastercard credit/debit card format (starts with 51-55 or 2221-2720, 16 digits)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">5425233430109903</div>
+                                <div class="example-item">2221000000000009</div>
+                                <div class="example-item">5555555555554444</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-mastercard">^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-mastercard')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Email Address -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Email Address</h3>
+                            <p class="pattern-description">Standard email address format validation</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">user@example.com</div>
+                                <div class="example-item">john.doe@company.lk</div>
+                                <div class="example-item">info_123@mail.co.uk</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-email">^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-email')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Postal Code -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Postal Code</h3>
+                            <p class="pattern-description">Sri Lankan postal code format (5 digits)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">10100</div>
+                                <div class="example-item">80000</div>
+                                <div class="example-item">11222</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-postal">^[0-9]{5}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-postal')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vehicle Registration -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Vehicle Registration Number</h3>
+                            <p class="pattern-description">Sri Lankan vehicle registration format (e.g., ABC-1234, WP-CAA-1234)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">ABC-1234</div>
+                                <div class="example-item">WP-CAA-1234</div>
+                                <div class="example-item">KY-1234</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-vehicle">^[A-Z]{2,3}-(?:[A-Z]{3}-)?[0-9]{4}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-vehicle')">
+                                        <span class="copy-icon">��</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Business Registration Number -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Business Registration Number</h3>
+                            <p class="pattern-description">Sri Lankan business registration number (alphanumeric, typically 9-12 characters)</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">PV12345678</div>
+                                <div class="example-item">GA123456789</div>
+                                <div class="example-item">PB1234567890</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-business">^[A-Z]{2}[0-9]{7,10}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-business')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- EPF Number -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">EPF Number</h3>
+                            <p class="pattern-description">Employees' Provident Fund number format</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">123456</div>
+                                <div class="example-item">654321</div>
+                                <div class="example-item">999888</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-epf">^[0-9]{6}$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-epf')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- IPv4 Address -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">IPv4 Address</h3>
+                            <p class="pattern-description">Standard IPv4 address format</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">192.168.1.1</div>
+                                <div class="example-item">10.0.0.1</div>
+                                <div class="example-item">172.16.254.1</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-ipv4">^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-ipv4')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MAC Address -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">MAC Address</h3>
+                            <p class="pattern-description">Network device MAC address format</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">00:1B:44:11:3A:B7</div>
+                                <div class="example-item">00-1B-44-11-3A-B7</div>
+                                <div class="example-item">001B.4411.3AB7</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-mac">^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9A-Fa-f]{4}\.){2}([0-9A-Fa-f]{4})$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-mac')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- URL Pattern -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">URL Pattern</h3>
+                            <p class="pattern-description">Standard URL/Website address format</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">https://www.example.com</div>
+                                <div class="example-item">http://example.lk/path</div>
+                                <div class="example-item">https://sub.domain.com/page?id=1</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-url">^https?://[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:/[^\s]*)?$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-url')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Date Format -->
+                    <div class="pattern-card">
+                        <div class="pattern-header">
+                            <h3 class="pattern-title">Date Format (DD/MM/YYYY)</h3>
+                            <p class="pattern-description">Common date format used in Sri Lanka</p>
+                        </div>
+                        <div class="pattern-body">
+                            <div class="pattern-examples">
+                                <div class="examples-title">Valid Examples:</div>
+                                <div class="example-item">31/12/2023</div>
+                                <div class="example-item">01/01/2000</div>
+                                <div class="example-item">15/08/1995</div>
+                            </div>
+                            <div class="regex-container">
+                                <div class="regex-label">Regular Expression:</div>
+                                <div class="regex-box">
+                                    <code id="regex-date">^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([12][0-9]{3})$</code>
+                                    <button class="copy-btn" onclick="copyToClipboard('regex-date')">
+                                        <span class="copy-icon">📋</span>
+                                        <span class="copy-text">Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../products.html">Products</a>
+                    <a href="../index.html#services">Services</a>
+                    <a href="../index.html#contact">Contact</a>
+                    <a href="patterns.html">Resources</a>
+                </div>
+                <p>&copy; 2024 ALFA Network LK. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <div class="toast" id="toast">
+        <span>✓</span>
+        <span>Regex copied to clipboard!</span>
+    </div>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            body.setAttribute('data-theme', 'light');
+            themeIcon.textContent = '☀️';
+        }
+        themeToggle.addEventListener('click', () => {
+            const theme = body.getAttribute('data-theme');
+            if (theme === 'light') {
+                body.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast();
+                const button = element.nextElementSibling;
+                const originalText = button.querySelector('.copy-text').textContent;
+                button.querySelector('.copy-text').textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.querySelector('.copy-text').textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+            document.body.removeChild(textarea);
+        }
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
